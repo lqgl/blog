@@ -1,7 +1,7 @@
-baseURL = "https://example.com"
-languageCode = "en-us"
-defaultContentLanguage = "en"
-title = "Hugo Hermit"
+baseURL = "https://lqgl.github.io/MonoyaBlog"
+languageCode = "zh-hans"
+defaultContentLanguage = "zh-hans"
+title = "Monoya"
 theme = "hermit"
 # enableGitInfo = true
 pygmentsCodefences  = true
@@ -14,7 +14,7 @@ enableEmoji = true  # Shorthand emojis in content files - https://gohugo.io/func
 # disqusShortname = "yourdiscussshortname"
 
 [author]
-  name = "John Doe"
+  name = "Monoya"
 
 [blackfriday]
   # hrefTargetBlank = true
