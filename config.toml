@@ -74,6 +74,16 @@ enableEmoji = true  # Shorthand emojis in content files - https://gohugo.io/func
     url = "java-web/"
     weight = 10
 
+  [[menu.main]] 
+    name = "Linux"
+    url = "linux-post/"
+    weight = 10
+
+  [[menu.main]]
+    name = "Userful Kit"
+    url = "kit/"
+    weight = 10
+
   [[menu.main]]
     name = "About"
     url = "about-me/"
