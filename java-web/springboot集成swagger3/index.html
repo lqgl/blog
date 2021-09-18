@@ -1,0 +1,132 @@
+<!doctype html><html lang=zh-hans>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta http-equiv=x-ua-compatible content="ie=edge">
+<meta name=theme-color content="#494f5c">
+<meta name=msapplication-TileColor content="#494f5c">
+<meta itemprop=name content="SpringBoot集成Swagger3.0.0">
+<meta itemprop=description content="SpringBoot集成Swagger">
+<meta itemprop=wordCount content="127">
+<meta itemprop=keywords content="SpringBoot,Swagger,"><meta property="og:title" content="SpringBoot集成Swagger3.0.0">
+<meta property="og:description" content="SpringBoot集成Swagger">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://monoya.top/java-web/springboot%E9%9B%86%E6%88%90swagger3/"><meta property="article:section" content="java-web">
+<meta name=twitter:card content="summary">
+<meta name=twitter:title content="SpringBoot集成Swagger3.0.0">
+<meta name=twitter:description content="SpringBoot集成Swagger">
+<link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png>
+<link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
+<link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png>
+<link rel=manifest href=/site.webmanifest>
+<link rel=mask-icon href=/safari-pinned-tab.svg color>
+<link rel="shortcut icon" href=/favicon.ico>
+<title>SpringBoot集成Swagger3.0.0</title>
+<link rel=stylesheet href=https://monoya.top/css/style.min.35b1b3e4492100eaeb58904d4eb21afed56151befc749be5a79c5aab067d01ef.css integrity="sha256-NbGz5EkhAOrrWJBNTrIa/tVhUb78dJvlp5xaqwZ9Ae8=" crossorigin=anonymous>
+</head>
+<body id=page>
+<header id=site-header class="animated slideInUp">
+<div class="hdr-wrapper section-inner">
+<div class=hdr-left>
+<div class=site-branding>
+<a href=https://monoya.top>Monoya Blog</a>
+</div>
+<nav class="site-nav hide-in-mobile">
+<a href=https://monoya.top/java-web/>Java Web</a>
+<a href=https://monoya.top/about-me/>About</a>
+</nav>
+</div>
+<div class="hdr-right hdr-icons">
+<span class="hdr-social hide-in-mobile"><a href="http://wpa.qq.com/msgrd?v=3&uin=12736481&site=qq&menu=yes" target=_blank rel="noopener me" title=Qq><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path transform="scale(0.04) translate(75 40)" stroke-width="50" d="M433.754 420.445c-11.526 1.393-44.86-52.741-44.86-52.741.0 31.345-16.136 72.247-51.051 101.786 16.842 5.192 54.843 19.167 45.803 34.421-7.316 12.343-125.51 7.881-159.632 4.037-34.122 3.844-152.316 8.306-159.632-4.037-9.045-15.25 28.918-29.214 45.783-34.415-34.92-29.539-51.059-70.445-51.059-101.792.0.0-33.334 54.134-44.859 52.741-5.37-.65-12.424-29.644 9.347-99.704 10.261-33.024 21.995-60.478 40.144-105.779C60.683 98.063 108.982.006 224 0c113.737.006 163.156 96.133 160.264 214.963 18.118 45.223 29.912 72.85 40.144 105.778 21.768 70.06 14.716 99.053 9.346 99.704z"/></svg></a><a href=https://mail.qq.com/ target=_blank rel="noopener me" title=Email><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1.0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1.0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></a><a href=https://github.com/lqgl target=_blank rel="noopener me" title=Github><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37.0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44.0 0020 4.77 5.07 5.07.0 0019.91 1S18.73.65 16 2.48a13.38 13.38.0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07.0 005 4.77 5.44 5.44.0 003.5 8.55c0 5.42 3.3 6.61 6.44 7A3.37 3.37.0 009 18.13V22"/></svg></a></span><button id=menu-btn class=hdr-btn title=菜单><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+</div>
+</div>
+</header>
+<div id=mobile-menu class="animated fast">
+<ul>
+<li><a href=https://monoya.top/java-web/>Java Web</a></li>
+<li><a href=https://monoya.top/about-me/>About</a></li>
+</ul>
+</div>
+<main class="site-main section-inner thin animated fadeIn faster">
+<h1>SpringBoot集成Swagger3.0.0</h1>
+<div class=content>
+<h2 id=概述>概述<a href=#概述 class=anchor aria-hidden=true><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 015 5 5 5 0 01-5 5h-3m-6 0H6a5 5 0 01-5-5 5 5 0 015-5h3"/><line x1="8" y1="12" x2="16" y2="12"/></svg></a></h2>
+<p>Swagger 是一个规范和完整的框架，用于生成、描述、调用和可视化 RESTful 风格的 Web 服务。</p>
+<p>总体目标是使客户端和文件系统作为服务器以同样的速度来更新。文件的方法、参数和模型紧密集成到服务器端的代码，允许 API 来始终保持同步。</p>
+<p><strong>3.0版本在配置上与2.9稍有差别，包括依赖包改为: springfox-boot-starter，启用注解更改为: <code>@EnableOpenApi</code>等。</strong></p>
+<p><a href=https://github.com/springfox/springfox/releases>swagger 3.0 release notes</a></p>
+<h2 id=引入依赖>引入依赖<a href=#引入依赖 class=anchor aria-hidden=true><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 015 5 5 5 0 01-5 5h-3m-6 0H6a5 5 0 01-5-5 5 5 0 015-5h3"/><line x1="8" y1="12" x2="16" y2="12"/></svg></a></h2>
+<p>在 <code>pom.xml</code> 文件中引入 <code>springfox-boot-starter</code> 依赖，该依赖会自动引入 <code>Swagger</code> 相关依赖</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-xml data-lang=xml>            <span class=nt>&lt;dependency&gt;</span>
+                <span class=nt>&lt;groupId&gt;</span>io.springfox<span class=nt>&lt;/groupId&gt;</span>
+                <span class=nt>&lt;artifactId&gt;</span>springfox-boot-starter<span class=nt>&lt;/artifactId&gt;</span>
+                <span class=nt>&lt;version&gt;</span>3.0.0<span class=nt>&lt;/version&gt;</span>
+            <span class=nt>&lt;/dependency&gt;</span>
+</code></pre></div><h2 id=自定义配置类>自定义配置类<a href=#自定义配置类 class=anchor aria-hidden=true><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 015 5 5 5 0 01-5 5h-3m-6 0H6a5 5 0 01-5-5 5 5 0 015-5h3"/><line x1="8" y1="12" x2="16" y2="12"/></svg></a></h2>
+<p>创建一个 Swagger3 配置类, <code>SwaggerConfig</code></p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=cm>/**
+</span><span class=cm>* Swagger配置类
+</span><span class=cm>*/</span>
+<span class=nd>@Configuration</span>
+<span class=nd>@EnableOpenApi</span>
+<span class=kd>public</span> <span class=kd>class</span> <span class=nc>SwaggerConfig</span> <span class=o>{</span>
+    <span class=nd>@Bean</span>
+    <span class=kd>public</span> <span class=n>Docket</span> <span class=nf>docket</span><span class=o>(){</span>
+       <span class=k>return</span> <span class=k>new</span> <span class=n>Docket</span><span class=o>(</span><span class=n>DocumentationType</span><span class=o>.</span><span class=na>OAS_30</span><span class=o>)</span>
+                <span class=o>.</span><span class=na>apiInfo</span><span class=o>(</span><span class=n>apiInfo</span><span class=o>()).</span><span class=na>enable</span><span class=o>(</span><span class=kc>true</span><span class=o>)</span>
+                <span class=o>.</span><span class=na>select</span><span class=o>()</span>
+                <span class=c1>//apis： 添加swagger接口提取范围(contoller层包名)
+</span><span class=c1></span>                <span class=o>.</span><span class=na>apis</span><span class=o>(</span><span class=n>RequestHandlerSelectors</span><span class=o>.</span><span class=na>basePackage</span><span class=o>(</span><span class=s>&#34;com.example.troller&#34;</span><span class=o>))</span>
+                <span class=c1>//.apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class))
+</span><span class=c1></span>                <span class=o>.</span><span class=na>paths</span><span class=o>(</span><span class=n>PathSelectors</span><span class=o>.</span><span class=na>any</span><span class=o>())</span>
+                <span class=o>.</span><span class=na>build</span><span class=o>();</span>
+    <span class=o>}</span>
+    
+    <span class=kd>private</span> <span class=n>ApiInfo</span> <span class=nf>apiInfo</span><span class=o>(){</span>
+        <span class=k>return</span> <span class=k>new</span> <span class=n>ApiInfoBuilder</span><span class=o>()</span>
+                <span class=o>.</span><span class=na>title</span><span class=o>(</span><span class=s>&#34;XX项目接口文档&#34;</span><span class=o>)</span>
+                <span class=o>.</span><span class=na>description</span><span class=o>(</span><span class=s>&#34;XX项目描述&#34;</span><span class=o>)</span>
+                <span class=o>.</span><span class=na>contact</span><span class=o>(</span><span class=k>new</span> <span class=n>Contact</span><span class=o>(</span><span class=s>&#34;作者&#34;</span><span class=o>,</span> <span class=s>&#34;作者URL&#34;</span><span class=o>,</span> <span class=s>&#34;作者Email&#34;</span><span class=o>))</span>
+                <span class=o>.</span><span class=na>version</span><span class=o>(</span><span class=s>&#34;1.0&#34;</span><span class=o>)</span>
+                <span class=o>.</span><span class=na>build</span><span class=o>();</span>
+    <span class=o>}</span>
+<span class=o>}</span>
+</code></pre></div><h2 id=在你的-controller-上添加-swagger-注解>在你的 Controller 上添加 swagger 注解<a href=#在你的-controller-上添加-swagger-注解 class=anchor aria-hidden=true><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 015 5 5 5 0 01-5 5h-3m-6 0H6a5 5 0 01-5-5 5 5 0 015-5h3"/><line x1="8" y1="12" x2="16" y2="12"/></svg></a></h2>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=nd>@Api</span><span class=o>(</span><span class=n>tags</span><span class=o>=</span><span class=s>&#34;用户管理&#34;</span><span class=o>)</span>
+<span class=nd>@RestController</span>
+<span class=nd>@RequestMapping</span><span class=o>(</span><span class=s>&#34;/user&#34;</span><span class=o>)</span>
+<span class=kd>public</span> <span class=kd>class</span> <span class=nc>UserController</span> <span class=o>{</span>
+    <span class=kd>private</span> <span class=kd>static</span> <span class=n>Logger</span> <span class=n>logger</span> <span class=o>=</span> <span class=n>LoggerFactory</span><span class=o>.</span><span class=na>getLogger</span><span class=o>(</span><span class=n>UserController</span><span class=o>.</span><span class=na>class</span><span class=o>);</span>
+
+    <span class=nd>@Resource</span>
+    <span class=n>UserService</span> <span class=n>userService</span><span class=o>;</span>
+    
+	<span class=nd>@ApiOperation</span><span class=o>(</span><span class=s>&#34;查询所有用户&#34;</span><span class=o>)</span>
+    <span class=nd>@GetMapping</span><span class=o>(</span><span class=s>&#34;/getUser4Page&#34;</span><span class=o>)</span>
+    <span class=kd>public</span> <span class=n>List</span><span class=o>&lt;</span><span class=n>User</span><span class=o>&gt;</span> <span class=nf>getUser4Page</span><span class=o>(){</span>
+        <span class=n>logger</span><span class=o>.</span><span class=na>info</span><span class=o>(</span><span class=s>&#34;开始查询所有用户&#34;</span><span class=o>);</span>
+        <span class=k>return</span> <span class=n>userService</span><span class=o>.</span><span class=na>getUser4Page</span><span class=o>();</span>
+    <span class=o>}</span>
+    <span class=o>...</span>
+<span class=o>}</span>
+</code></pre></div><h2 id=如启用了访问权限还需将-swagger相关-uri-允许匿名访问>如启用了访问权限，还需将 swagger相关 uri 允许匿名访问<a href=#如启用了访问权限还需将-swagger相关-uri-允许匿名访问 class=anchor aria-hidden=true><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 015 5 5 5 0 01-5 5h-3m-6 0H6a5 5 0 01-5-5 5 5 0 015-5h3"/><line x1="8" y1="12" x2="16" y2="12"/></svg></a></h2>
+<p>具体需要添加的uri有：</p>
+<pre tabindex=0><code>/swagger**/**
+/webjars/**
+/v3/**
+/doc.html
+</code></pre><h2 id=启动应用访问-httpipportswagger-uiindexhtml>启动应用，访问 <code>http://ip:port/swagger-ui/index.html</code><a href=#启动应用访问-httpipportswagger-uiindexhtml class=anchor aria-hidden=true><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 015 5 5 5 0 01-5 5h-3m-6 0H6a5 5 0 01-5-5 5 5 0 015-5h3"/><line x1="8" y1="12" x2="16" y2="12"/></svg></a></h2>
+<p><img src=https://raw.githubusercontent.com/lqgl/repo/main/img/image-20210304095648667.png alt=image-20210304095648667></p>
+<h2 id=参考文档>参考文档<a href=#参考文档 class=anchor aria-hidden=true><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 015 5 5 5 0 01-5 5h-3m-6 0H6a5 5 0 01-5-5 5 5 0 015-5h3"/><line x1="8" y1="12" x2="16" y2="12"/></svg></a></h2>
+<p><a href=https://segmentfault.com/a/1190000037455077>spring boot 集成 swagger 3.0 指南</a></p>
+</div>
+</main>
+<footer id=site-footer class="section-inner thin animated fadeIn faster">
+<p>&copy; 2021 <a href=https://monoya.top>Monoya</a> &#183; <a href=https://creativecommons.org/licenses/by-nc/4.0/ target=_blank rel=noopener>CC BY-NC 4.0</a></p>
+<p>
+Made with <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a> &#183; Theme <a href=https://github.com/Track3/hermit target=_blank rel=noopener>Hermit</a> &#183; <a href=https://monoya.top/posts/index.xml target=_blank title=rss><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 019 9"/><path d="M4 4a16 16 0 0116 16"/><circle cx="5" cy="19" r="1"/></svg></a>
+</p>
+</footer>
+<script src=https://monoya.top/js/bundle.min.7d8545daa55d62427355498dd8da13f98ff79a7938ce7d2a5e2ae1ec0de3beb8.js integrity="sha256-fYVF2qVdYkJzVUmN2NoT+Y/3mnk4zn0qXirh7A3jvrg=" crossorigin=anonymous></script>
+</body>
+</html>
