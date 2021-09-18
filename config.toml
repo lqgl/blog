@@ -1,7 +1,7 @@
-baseURL = "https://lqgl.github.io/MonoyaBlog"
+baseURL = "https://monoya.top"
 languageCode = "zh-hans"
 defaultContentLanguage = "zh-hans"
-title = "Monoya"
+title = "Monoya Blog"
 theme = "hermit"
 # enableGitInfo = true
 pygmentsCodefences  = true
@@ -56,25 +56,25 @@ enableEmoji = true  # Shorthand emojis in content files - https://gohugo.io/func
   # Social Icons
   # Check https://github.com/Track3/hermit#social-icons for more info.
   [[params.social]]
-    name = "twitter"
-    url = "https://twitter.com/"
+    name = "qq"
+    url = "http://wpa.qq.com/msgrd?v=3&uin=12736481&site=qq&menu=yes"
 
   [[params.social]]
-    name = "instagram"
-    url = "https://instagram.com/"
+    name = "email"
+    url = "https://mail.qq.com/"
 
   [[params.social]]
     name = "github"
-    url = "https://github.com/"
+    url = "https://github.com/lqgl"
 
 [menu]
 
   [[menu.main]]
-    name = "Posts"
-    url = "posts/"
+    name = "Java Web"
+    url = "java-web/"
     weight = 10
 
   [[menu.main]]
     name = "About"
-    url = "about-hugo/"
+    url = "about-me/"
     weight = 20
