@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-hans">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="theme-color" content="#494f5c">
+	<meta name="msapplication-TileColor" content="#494f5c">
+<meta itemprop="name" content="Springboot集成FlyWay">
+<meta itemprop="description" content="Springboot集成FlyWay，使用FlyWay进行数据库版本管理"><meta itemprop="datePublished" content="2020-12-24T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2020-12-24T00:00:00+00:00" />
+<meta itemprop="wordCount" content="122">
+<meta itemprop="keywords" content="SpringBoot,FlyWay," /><meta property="og:title" content="Springboot集成FlyWay" />
+<meta property="og:description" content="Springboot集成FlyWay，使用FlyWay进行数据库版本管理" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://monoya.top/java-web/springboot%E9%9B%86%E6%88%90flyway/" /><meta property="article:section" content="java-web" />
+<meta property="article:published_time" content="2020-12-24T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-12-24T00:00:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Springboot集成FlyWay"/>
+<meta name="twitter:description" content="Springboot集成FlyWay，使用FlyWay进行数据库版本管理"/>
+
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="manifest" href="/site.webmanifest">
+	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
+	<link rel="shortcut icon" href="/favicon.ico">
+
+	<title>Springboot集成FlyWay</title>
+	<link rel="stylesheet" href="https://monoya.top/css/style.min.35b1b3e4492100eaeb58904d4eb21afed56151befc749be5a79c5aab067d01ef.css" integrity="sha256-NbGz5EkhAOrrWJBNTrIa/tVhUb78dJvlp5xaqwZ9Ae8=" crossorigin="anonymous">
+	
+</head>
+
+<body id="page">
+	
+	<header id="site-header" class="animated slideInUp">
+		<div class="hdr-wrapper section-inner">
+			<div class="hdr-left">
+				<div class="site-branding">
+					<a href="https://monoya.top">Monoya Blog</a>
+				</div>
+				<nav class="site-nav hide-in-mobile">
+					
+				<a href="https://monoya.top/java-web/">Java Web</a>
+				<a href="https://monoya.top/about-me/">About</a>
+
+				</nav>
+			</div>
+			<div class="hdr-right hdr-icons">
+				<span class="hdr-social hide-in-mobile"><a href="http://wpa.qq.com/msgrd?v=3&amp;uin=12736481&amp;site=qq&amp;menu=yes" target="_blank" rel="noopener me" title="Qq"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path transform="scale(0.04) translate(75 40)" stroke-width="50" d="M433.754 420.445c-11.526 1.393-44.86-52.741-44.86-52.741 0 31.345-16.136 72.247-51.051 101.786 16.842 5.192 54.843 19.167 45.803 34.421-7.316 12.343-125.51 7.881-159.632 4.037-34.122 3.844-152.316 8.306-159.632-4.037-9.045-15.25 28.918-29.214 45.783-34.415-34.92-29.539-51.059-70.445-51.059-101.792 0 0-33.334 54.134-44.859 52.741-5.37-.65-12.424-29.644 9.347-99.704 10.261-33.024 21.995-60.478 40.144-105.779C60.683 98.063 108.982.006 224 0c113.737.006 163.156 96.133 160.264 214.963 18.118 45.223 29.912 72.85 40.144 105.778 21.768 70.06 14.716 99.053 9.346 99.704z"></path></svg></a><a href="https://mail.qq.com/" target="_blank" rel="noopener me" title="Email"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></a><a href="https://github.com/lqgl" target="_blank" rel="noopener me" title="Github"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a></span><button id="menu-btn" class="hdr-btn" title="菜单"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+			</div>
+		</div>
+	</header>
+	<div id="mobile-menu" class="animated fast">
+		<ul>
+			<li><a href="https://monoya.top/java-web/">Java Web</a></li>
+			<li><a href="https://monoya.top/about-me/">About</a></li>
+		</ul>
+	</div>
+
+
+	<main class="site-main section-inner thin animated fadeIn faster">
+		<h1>Springboot集成FlyWay</h1>
+		<div class="content">
+			<h2 id="依赖">依赖<a href="#依赖" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>在pom.xml添加maven依赖</p>
+<pre tabindex="0"><code>&lt;!-- mysql 依赖 --&gt;
+&lt;dependency&gt;
+&lt;groupId&gt;mysql&lt;/groupId&gt;
+&lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;
+&lt;/dependency&gt;
+
+&lt;!-- 数据库版本管理 依赖 --&gt;
+&lt;dependency&gt;
+&lt;groupId&gt;org.flywaydb&lt;/groupId&gt;
+&lt;artifactId&gt;flyway-core&lt;/artifactId&gt;
+&lt;/dependency&gt;
+
+&lt;!-- 数据库访问依赖 --&gt;
+&lt;dependency&gt;
+&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+&lt;artifactId&gt;spring-boot-starter-jdbc&lt;/artifactId&gt;
+&lt;/dependency&gt;
+</code></pre><pre tabindex="0"><code>&lt;plugin&gt;
+    &lt;groupId&gt;org.flywaydb&lt;/groupId&gt;
+    &lt;artifactId&gt;flyway-maven-plugin&lt;/artifactId&gt;
+&lt;/plugin&gt;
+</code></pre><h2 id="配置-applicationyml">配置 <code>application.yml</code><a href="#配置-applicationyml" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>在application.ym文件添加Flyway配置
+需要先配置数据源（连接上数据库），可以自己换成druid</p>
+<pre tabindex="0"><code># 数据源
+spring:
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&amp;characterEncoding=utf8&amp;zeroDateTimeBehavior=convertToNull&amp;allowMultiQueries=true&amp;serverTimezone=PRC&amp;useSSL=false
+    username: root
+    password: 密码
+    # MySQL 8.x以下: com.mysql.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
+---
+# FLYWAY (FlywayProperties)
+spring:
+  flyway:
+    url: jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+    user: root
+    password: 密码
+    baseline-on-migrate: true #在没有元数据表的情况下，针对非空Schema执行迁移时是否自动调用基线。
+</code></pre><h3 id="在resource目录下创建dbmigration目录添加sql脚本">在resource目录下创建db/migration目录添加sql脚本<a href="#在resource目录下创建dbmigration目录添加sql脚本" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p><img src="https://raw.githubusercontent.com/lqgl/repo/main/img/20201224132145.png" alt="">
+手动创建 db/migration 目录，然后在该目录下创建数据库脚本，数据库脚本的命名方式如下：</p>
+<pre tabindex="0"><code>V&lt;VERSION&gt;__&lt;NAME&gt;.sql #注意：是两条下划线
+#比如V1_0_0__Create_Table_User.sql
+</code></pre><p>首先是大写字母 V，然后是版本号，要是有小版本可以用下划线隔开，例如 2_1，版本号后面是<code>两个下划线</code>，然后是脚本名称，文件后缀是 <code>.sql</code>。</p>
+<h3 id="验证是否成功">验证是否成功:<a href="#验证是否成功" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>项目启动时,会运行flyway执行sql语句.生成schema_version表,用于记录sql执行情况.
+去数据库<code>test</code>看<code>flyway_schema_history</code>表
+<img src="https://raw.githubusercontent.com/lqgl/repo/main/img/20201224132524.png" alt=""></p>
+<h2 id="其他配置">其他配置<a href="#其他配置" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<pre tabindex="0"><code>spring:
+  flyway:
+    enabled: true #是否开启 flyway，默认就是开启的
+    url: jdbc:mysql://127.0.0.1:3306/mygame?serverTimezone=UTC # 地址
+    user: root #用户名
+    password: 365472 #密码
+    baseline-on-migrate: true #在没有元数据表的情况下，针对非空Schema执行迁移时是否自动调用基线。
+    encoding: UTF-8 #flyway 字符编码
+    locations: classpath:db/migration #sql 脚本的目录，默认是 classpath:db/migration，如果有多个，用 , 隔开
+    clean-disabled: true #这个属性非常关键，它表示是否要清除已有库下的表，如果执行的脚本是 V1__xxx.sql，那么会先清除已有库下的表，然后再执行脚本，这在开发环境下还挺方便，但是在生产环境下就要命了，而且它默认就是要清除，生产环境一定要自己配置设置为 true。
+    table: flyway_schema_history #配置数据库信息表的名称，默认是 flyway_schema_history。
+</code></pre><h2 id="参考文档">参考文档<a href="#参考文档" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p><a href="https://blog.csdn.net/qq_41402200/article/details/89247317">SpringBoot整合Flyway</a>
+<a href="https://baijiahao.baidu.com/s?id=1659024978275677262&amp;wfr=spider&amp;for=pc">简化Spring Boot项目部署，Flyway搞起来</a></p>
+
+		</div>
+	</main>
+
+	<footer id="site-footer" class="section-inner thin animated fadeIn faster">
+		<p>&copy; 2021 <a href="https://monoya.top">Monoya</a> &#183; <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></p>
+		<p>
+			Made with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> &#183; Theme <a href="https://github.com/Track3/hermit" target="_blank" rel="noopener">Hermit</a> &#183; <a href="https://monoya.top/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a>
+		</p>
+	</footer>
+
+
+
+	<script src="https://monoya.top/js/bundle.min.7d8545daa55d62427355498dd8da13f98ff79a7938ce7d2a5e2ae1ec0de3beb8.js" integrity="sha256-fYVF2qVdYkJzVUmN2NoT+Y/3mnk4zn0qXirh7A3jvrg=" crossorigin="anonymous"></script>
+	
+
+</body>
+
+</html>
