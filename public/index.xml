@@ -2,27 +2,27 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Monoya Blog</title>
-    <link>https://monoya.top/</link>
+    <link>https://lqgl.github.io/MonoyaBlog/</link>
     <description>Recent content on Monoya Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-hans</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Thu, 24 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://monoya.top/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 24 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://lqgl.github.io/MonoyaBlog/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>About Me</title>
-      <link>https://monoya.top/about-me/</link>
+      <link>https://lqgl.github.io/MonoyaBlog/about-me/</link>
       <pubDate>Fri, 17 Sep 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://monoya.top/about-me/</guid>
+      <guid>https://lqgl.github.io/MonoyaBlog/about-me/</guid>
       <description>Hi, I’m @lqgl I’m interested in Java, Go I’m currently learning &amp;hellip; I’m looking to collaborate on &amp;hellip; How to reach me &amp;hellip;  Learn more and contribute on GitHub.</description>
     </item>
     
     <item>
       <title>Springboot集成FlyWay</title>
-      <link>https://monoya.top/java-web/springboot%E9%9B%86%E6%88%90flyway/</link>
+      <link>https://lqgl.github.io/MonoyaBlog/java-web/springboot%E9%9B%86%E6%88%90flyway/</link>
       <pubDate>Thu, 24 Dec 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://monoya.top/java-web/springboot%E9%9B%86%E6%88%90flyway/</guid>
+      <guid>https://lqgl.github.io/MonoyaBlog/java-web/springboot%E9%9B%86%E6%88%90flyway/</guid>
       <description>依赖 在pom.xml添加maven依赖
 &amp;lt;!-- mysql 依赖 --&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;mysql&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;mysql-connector-java&amp;lt;/artifactId&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;!-- 数据库版本管理 依赖 --&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.flywaydb&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;flyway-core&amp;lt;/artifactId&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;!-- 数据库访问依赖 --&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;spring-boot-starter-jdbc&amp;lt;/artifactId&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;plugin&amp;gt; &amp;lt;groupId&amp;gt;org.flywaydb&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;flyway-maven-plugin&amp;lt;/artifactId&amp;gt; &amp;lt;/plugin&amp;gt; 配置 application.yml 在application.ym文件添加Flyway配置 需要先配置数据源（连接上数据库），可以自己换成druid
 # 数据源 spring: datasource: url: jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&amp;amp;characterEncoding=utf8&amp;amp;zeroDateTimeBehavior=convertToNull&amp;amp;allowMultiQueries=true&amp;amp;serverTimezone=PRC&amp;amp;useSSL=false username: root password: 密码 # MySQL 8.x以下: com.mysql.jdbc.Driver driver-class-name: com.mysql.cj.jdbc.Driver --- # FLYWAY (FlywayProperties) spring: flyway: url: jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC user: root password: 密码 baseline-on-migrate: true #在没有元数据表的情况下，针对非空Schema执行迁移时是否自动调用基线。 在resource目录下创建db/migration目录添加sql脚本 手动创建 db/migration 目录，然后在该目录下创建数据库脚本，数据库脚本的命名方式如下：
@@ -31,10 +31,10 @@ V&amp;lt;VERSION&amp;gt;__&amp;lt;NAME&amp;gt;.sql #注意：是两条下划线 
     
     <item>
       <title>SpringBoot集成Druid</title>
-      <link>https://monoya.top/java-web/springboot%E9%9B%86%E6%88%90druid/</link>
+      <link>https://lqgl.github.io/MonoyaBlog/java-web/springboot%E9%9B%86%E6%88%90druid/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://monoya.top/java-web/springboot%E9%9B%86%E6%88%90druid/</guid>
+      <guid>https://lqgl.github.io/MonoyaBlog/java-web/springboot%E9%9B%86%E6%88%90druid/</guid>
       <description>概述 Druid 是阿里巴巴开源平台上的一个项目，整个项目由数据库连接池、插件框架和 SQL 解析器组成。该项目主要是为了扩展 JDBC 的一些限制，可以让程序员实现一些特殊的需求，比如向密钥服务请求凭证、统计 SQL 信息、SQL 性能收集、SQL 注入检查、SQL 翻译等，程序员可以通过定制来实现自己需要的功能。
 Druid 是目前最好的数据库连接池，在功能、性能、扩展性方面，都超过其他数据库连接池，包括 DBCP、C3P0、BoneCP、Proxool、JBoss DataSource。Druid 已经在阿里巴巴部署了超过 600 个应用，经过多年生产环境大规模部署的严苛考验。Druid 是阿里巴巴开发的号称为监控而生的数据库连接池！
 引入依赖 在 pom.xml 文件中引入 druid-spring-boot-starter 依赖
@@ -45,10 +45,10 @@ spring:datasource:druid:url:jdbc:mysql://ip:port/dbname?useUnicode=true&amp;amp;
     
     <item>
       <title>SpringBoot集成MyBatis</title>
-      <link>https://monoya.top/java-web/springboot%E9%9B%86%E6%88%90mybatis/</link>
+      <link>https://lqgl.github.io/MonoyaBlog/java-web/springboot%E9%9B%86%E6%88%90mybatis/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://monoya.top/java-web/springboot%E9%9B%86%E6%88%90mybatis/</guid>
+      <guid>https://lqgl.github.io/MonoyaBlog/java-web/springboot%E9%9B%86%E6%88%90mybatis/</guid>
       <description>概述 MyBatis是一个Java持久化框架，它通过XML描述符或注解把对象与存储过程或SQL语句关联起来，映射成数据库内对应的纪录。与其他对象关系映射框架不同，MyBatis没有将Java对象与数据库表关联起来，而是将Java方法与SQL语句关联。MyBatis允许用户充分利用数据库的各种功能，例如存储过程、视图、各种复杂的查询以及某数据库的专有特性。
 引入依赖 在 pom.xml 文件中引入 mapper-spring-boot-starter 依赖，该依赖会自动引入 MyBaits 相关依赖
 &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.mybatis.spring.boot&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;mybatis-spring-boot-starter&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;2.1.4&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt; 配置 application.yml 配置 MyBatis
@@ -57,10 +57,10 @@ mybatis: type-aliases-package: com.monoya.cake.business.model # 实体类的存�
     
     <item>
       <title>SpringBoot集成Swagger3.0.0</title>
-      <link>https://monoya.top/java-web/springboot%E9%9B%86%E6%88%90swagger3/</link>
+      <link>https://lqgl.github.io/MonoyaBlog/java-web/springboot%E9%9B%86%E6%88%90swagger3/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://monoya.top/java-web/springboot%E9%9B%86%E6%88%90swagger3/</guid>
+      <guid>https://lqgl.github.io/MonoyaBlog/java-web/springboot%E9%9B%86%E6%88%90swagger3/</guid>
       <description>概述 Swagger 是一个规范和完整的框架，用于生成、描述、调用和可视化 RESTful 风格的 Web 服务。
 总体目标是使客户端和文件系统作为服务器以同样的速度来更新。文件的方法、参数和模型紧密集成到服务器端的代码，允许 API 来始终保持同步。
 3.0版本在配置上与2.9稍有差别，包括依赖包改为: springfox-boot-starter，启用注解更改为: @EnableOpenApi等。

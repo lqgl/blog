@@ -2,54 +2,54 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Monoya Blog</title>
-    <link>https://monoya.top/tags/</link>
+    <link>https://lqgl.github.io/MonoyaBlog/tags/</link>
     <description>Recent content in Tags on Monoya Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-hans</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Thu, 24 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://monoya.top/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 24 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://lqgl.github.io/MonoyaBlog/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>FlyWay</title>
-      <link>https://monoya.top/tags/flyway/</link>
+      <link>https://lqgl.github.io/MonoyaBlog/tags/flyway/</link>
       <pubDate>Thu, 24 Dec 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://monoya.top/tags/flyway/</guid>
+      <guid>https://lqgl.github.io/MonoyaBlog/tags/flyway/</guid>
       <description></description>
     </item>
     
     <item>
       <title>SpringBoot</title>
-      <link>https://monoya.top/tags/springboot/</link>
+      <link>https://lqgl.github.io/MonoyaBlog/tags/springboot/</link>
       <pubDate>Thu, 24 Dec 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://monoya.top/tags/springboot/</guid>
+      <guid>https://lqgl.github.io/MonoyaBlog/tags/springboot/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Druid</title>
-      <link>https://monoya.top/tags/druid/</link>
+      <link>https://lqgl.github.io/MonoyaBlog/tags/druid/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://monoya.top/tags/druid/</guid>
+      <guid>https://lqgl.github.io/MonoyaBlog/tags/druid/</guid>
       <description></description>
     </item>
     
     <item>
       <title>MyBatis</title>
-      <link>https://monoya.top/tags/mybatis/</link>
+      <link>https://lqgl.github.io/MonoyaBlog/tags/mybatis/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://monoya.top/tags/mybatis/</guid>
+      <guid>https://lqgl.github.io/MonoyaBlog/tags/mybatis/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Swagger</title>
-      <link>https://monoya.top/tags/swagger/</link>
+      <link>https://lqgl.github.io/MonoyaBlog/tags/swagger/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://monoya.top/tags/swagger/</guid>
+      <guid>https://lqgl.github.io/MonoyaBlog/tags/swagger/</guid>
       <description></description>
     </item>
     
