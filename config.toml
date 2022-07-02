@@ -2,16 +2,10 @@
 baseURL = "https://monoya.top"
 
 # 设置没有语言指示符的内容的默认为该语言 
-languageCode = "zh_CN"
-
-# 默认内容语言
-defaultContentLanguage = "zh"
+languageCode = "zh-hans"
 
 # 标题
-title = "Monoya Blog"
-
-# 主题名字
-theme = "hermit"
+title = "Monoya's Blog"
 
 # enableGitInfo = true
 
@@ -22,7 +16,7 @@ pygmentsCodefences  = true
 pygmentsUseClasses  = true
 
 # If Chinese/Japanese/Korean is your main content language, enable this to make wordCount works right.
-# hasCJKLanguage = true  
+hasCJKLanguage = true  
 
 # Maximum number of items in the RSS feed.
 rssLimit = 10  
@@ -55,10 +49,12 @@ enableEmoji = true
   dateform        = "Jan 2, 2006"
   dateformShort   = "Jan 2"
   dateformNum     = "2006-01-02"
-  dateformNumTime = "2006-01-02 15:04 -0700"
+  dateformNumTime = "2006-01-02 15:04"
+
+  description = "Monoya的个人博客"
+  keywords = "Monoya,blog,博客,个人网站,中文独立博客"
 
   # Metadata mostly used in document's head
-  # description = ""
   # images = [""]
   themeColor = "#fcfcfc"
 
