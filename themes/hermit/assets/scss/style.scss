@@ -228,7 +228,7 @@ table {
   top: 0;
   width: 100%;
   box-sizing: border-box;
-  box-shadow: -1px -2px 3px rgba(0, 0, 0, 0.45);
+  box-shadow: 1px 1.5px .5px rgba(0, 0, 0, 0.15);
   background-color: $dark-grey;
   animation-duration: .3s;
 }
@@ -295,13 +295,13 @@ table {
 
 #mobile-menu {
   position: fixed;
-  bottom: 4.8em;
+  top: 4.8em;
   right: 1.5em;
   display: none;
   padding: .6em 1.8em;
   z-index: 1;
   box-sizing: border-box;
-  box-shadow: -1px -2px 3px 0px rgba(0, 0, 0, 0.45);
+  box-shadow: -1px -2px 3px 0px rgba(0, 0, 0, 0.35);
   background-color: $dark-grey;
 
   ul {
