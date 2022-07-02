@@ -1,35 +1,663 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Teches on Monoya Blog</title><link>https://monoya.top/tech/</link><description>Recent content in Teches on Monoya Blog</description><generator>Hugo -- gohugo.io</generator><language>zh_CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 19 Sep 2021 23:38:17 +0800</lastBuildDate><atom:link href="https://monoya.top/tech/index.xml" rel="self" type="application/rss+xml"/><item><title>Docker安装MySQL</title><link>https://monoya.top/tech/docker%E5%AE%89%E8%A3%85mysql/</link><pubDate>Sun, 19 Sep 2021 23:38:17 +0800</pubDate><guid>https://monoya.top/tech/docker%E5%AE%89%E8%A3%85mysql/</guid><description>拉取 MySQL 镜像 $ docker pull mysql:latest 运行容器 $ docker run -itd -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456 mysql 参数说明：
--p 3306:3306 ：映射容器服务的 3306 端口到宿主机的 3306 端口，外部主机可以直接通过 宿主机ip:3306 访问到 MySQL 的服务。 MYSQL_ROOT_PASSWORD=123456：设置 MySQL 服务 root 用户的密码。 mysql: 镜像 访问 MySQL 服务 $ mysql -h localhost -u root -p</description></item><item><title>Jrebel 完美激活</title><link>https://monoya.top/tech/jrebel-%E5%AE%8C%E7%BE%8E%E6%BF%80%E6%B4%BB/</link><pubDate>Fri, 12 Mar 2021 16:12:52 +0000</pubDate><guid>https://monoya.top/tech/jrebel-%E5%AE%8C%E7%BE%8E%E6%BF%80%E6%B4%BB/</guid><description>服务器地址监听服务器地址： http://jrebel.cicoding.cn
-GUID生成器： http://jrebel.cicoding.cn/guid
-生成的格式： http://jrebel.cicoding.cn/BAA48E18-786D-853B-C4BF-AB31F79CAEFF
-# 参考文档 JRebel激活破解完美解决方式 - (Play) - 博客园 (cnblogs.com)</description></item><item><title>Ubuntu20.04安装MongoDB</title><link>https://monoya.top/tech/ubuntu%E4%B8%8B%E5%AE%89%E8%A3%85mongodb/</link><pubDate>Mon, 08 Mar 2021 00:00:00 +0000</pubDate><guid>https://monoya.top/tech/ubuntu%E4%B8%8B%E5%AE%89%E8%A3%85mongodb/</guid><description>本教程描述了如何在Ubuntu20.04上安装MongoDB4.4
-安装MongoDB Ubuntu 20.04默认存储库中不提供最新版本的MongoDB，因此需要在系统中添加官方的MongoDB存储库。
-首先安装gnupg软件包 sudo apt-get install gnupg 导入包管理系统使用的公钥 wget -qO - https://www.mongodb.org/static/pgp/server-4.4.asc | sudo apt-key add - 添加MongoDB存储库 echo &amp;#34;deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.4 multiverse&amp;#34; | sudo tee /etc/apt/sources.list.d/mongodb-org-4.4.list 更新存储库 sudo apt-get update 使用以下命令安装MongoDB sudo apt install mongodb-org 启动MongoDB服务 启动MongoDB，同时使用以下命令使其在重新启动时启动
-sudo systemctl start mongod.service sudo systemctl enable mongod 检查MongoDB服务的状态 sudo systemctl status mongod 输出内容如下：
-● mongod.service - MongoDB Database Server Loaded: loaded (/lib/systemd/system/mongod.service; disabled; vendor preset: enabled) Active: active (running) since Sun 2020-12-20 19:51:14 PST; 3min 22s ago Docs: https://docs.</description></item><item><title>Ubuntu20.04安装和配置MySQL5.7</title><link>https://monoya.top/tech/ubuntu%E4%B8%8B%E5%AE%89%E8%A3%85mysql5.7/</link><pubDate>Mon, 08 Mar 2021 00:00:00 +0000</pubDate><guid>https://monoya.top/tech/ubuntu%E4%B8%8B%E5%AE%89%E8%A3%85mysql5.7/</guid><description>Ubuntu换源 更新数据源 备份原来的sorce文件
-sudo cp /etc/apt/sources.list /etc/apt/sources.list.old 修改sources.list文件
-sudo vim /etc/apt/sources.list 选择的是清华镜像源。将sources.list内容清空，然后选择一个源粘贴到sources.list，保存退出。
-# 清华镜像源 deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial main restricted universe multiverse deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial main restricted universe multiverse deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-updates main restricted universe multiverse deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-updates main restricted universe multiverse deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-backports main restricted universe multiverse deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-backports main restricted universe multiverse deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-security main restricted universe multiverse deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-security main restricted universe multiverse 更新镜像源和软件</description></item><item><title>Ubuntu安装Java</title><link>https://monoya.top/tech/ubuntu%E4%B8%8B%E5%AE%89%E8%A3%85java/</link><pubDate>Mon, 08 Mar 2021 00:00:00 +0000</pubDate><guid>https://monoya.top/tech/ubuntu%E4%B8%8B%E5%AE%89%E8%A3%85java/</guid><description>概述 此处以 JDK 1.8.0_152 为例
-下载地址 http://www.oracle.com/technetwork/java/javase/downloads/index.html
-解压缩并移动到指定目录 解压缩 tar -zxvf jdk-8u152-linux-x64.tar.gz 创建目录 mkdir -p /usr/local/java 移动安装包 mv jdk1.8.0_152/ /usr/local/java/ 设置所有者 chown -R root:root /usr/local/java/ 配置环境变量 配置系统环境变量 vi /etc/environment 添加如下语句 PATH=&amp;#34;/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games&amp;#34; export JAVA_HOME=/usr/local/java/jdk1.8.0_152 export JRE_HOME=/usr/local/java/jdk1.8.0_152/jre export CLASSPATH=$CLASSPATH:$JAVA_HOME/lib:$JAVA_HOME/jre/lib 配置用户环境变量 vi /etc/profile 添加如下语句 if [ &amp;#34;$PS1&amp;#34; ]; then if [ &amp;#34;$BASH&amp;#34; ] &amp;amp;&amp;amp; [ &amp;#34;$BASH&amp;#34; != &amp;#34;/bin/sh&amp;#34; ]; then # The file bash.bashrc already sets the default PS1. # PS1=&amp;#39;\h:\w\$ &amp;#39; if [ -f /etc/bash.</description></item><item><title>SpringBoot集成Druid</title><link>https://monoya.top/tech/springboot%E9%9B%86%E6%88%90druid/</link><pubDate>Fri, 05 Mar 2021 00:00:00 +0000</pubDate><guid>https://monoya.top/tech/springboot%E9%9B%86%E6%88%90druid/</guid><description>概述 Druid 是阿里巴巴开源平台上的一个项目，整个项目由数据库连接池、插件框架和 SQL 解析器组成。该项目主要是为了扩展 JDBC 的一些限制，可以让程序员实现一些特殊的需求，比如向密钥服务请求凭证、统计 SQL 信息、SQL 性能收集、SQL 注入检查、SQL 翻译等，程序员可以通过定制来实现自己需要的功能。
-Druid 是目前最好的数据库连接池，在功能、性能、扩展性方面，都超过其他数据库连接池，包括 DBCP、C3P0、BoneCP、Proxool、JBoss DataSource。Druid 已经在阿里巴巴部署了超过 600 个应用，经过多年生产环境大规模部署的严苛考验。Druid 是阿里巴巴开发的号称为监控而生的数据库连接池！
-引入依赖 在 pom.xml 文件中引入 druid-spring-boot-starter 依赖
-&amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;com.alibaba&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;druid-spring-boot-starter&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;1.2.5&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt; 引入数据库连接依赖
-&amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;mysql&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;mysql-connector-java&amp;lt;/artifactId&amp;gt; &amp;lt;scope&amp;gt;runtime&amp;lt;/scope&amp;gt; &amp;lt;/dependency&amp;gt; 配置 application.yml 在 application.yml 中配置数据库连接
-spring: datasource: druid: url: jdbc:mysql://ip:port/dbname?useUnicode=true&amp;amp;characterEncoding=utf-8&amp;amp;useSSL=false username: root password: 123456 initial-size: 1 min-idle: 1 max-active: 20 test-on-borrow: true # MySQL 8.x: com.mysql.cj.jdbc.Driver driver-class-name: com.mysql.jdbc.Driver</description></item><item><title>SpringBoot集成MyBatis</title><link>https://monoya.top/tech/springboot%E9%9B%86%E6%88%90mybatis/</link><pubDate>Fri, 05 Mar 2021 00:00:00 +0000</pubDate><guid>https://monoya.top/tech/springboot%E9%9B%86%E6%88%90mybatis/</guid><description>概述 MyBatis是一个Java持久化框架，它通过XML描述符或注解把对象与存储过程或SQL语句关联起来，映射成数据库内对应的纪录。与其他对象关系映射框架不同，MyBatis没有将Java对象与数据库表关联起来，而是将Java方法与SQL语句关联。MyBatis允许用户充分利用数据库的各种功能，例如存储过程、视图、各种复杂的查询以及某数据库的专有特性。
-引入依赖 在 pom.xml 文件中引入 mapper-spring-boot-starter 依赖，该依赖会自动引入 MyBaits 相关依赖
-&amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.mybatis.spring.boot&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;mybatis-spring-boot-starter&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;2.1.4&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt; 配置 application.yml 配置 MyBatis
-mybatis: type-aliases-package: com.monoya.cake.business.model # 实体类的存放路径 mapper-locations: classpath:mapper/*.xml # mapper.xml的存放路径</description></item><item><title>SpringBoot集成Swagger3.0.0</title><link>https://monoya.top/tech/springboot%E9%9B%86%E6%88%90swagger3/</link><pubDate>Fri, 05 Mar 2021 00:00:00 +0000</pubDate><guid>https://monoya.top/tech/springboot%E9%9B%86%E6%88%90swagger3/</guid><description>概述 Swagger 是一个规范和完整的框架，用于生成、描述、调用和可视化 RESTful 风格的 Web 服务。
-总体目标是使客户端和文件系统作为服务器以同样的速度来更新。文件的方法、参数和模型紧密集成到服务器端的代码，允许 API 来始终保持同步。
-3.0版本在配置上与2.9稍有差别，包括依赖包改为: springfox-boot-starter，启用注解更改为: @EnableOpenApi等。
-swagger 3.0 release notes
-引入依赖 在 pom.xml 文件中引入 springfox-boot-starter 依赖，该依赖会自动引入 Swagger 相关依赖
-&amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;io.springfox&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;springfox-boot-starter&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;3.0.0&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt; 自定义配置类 创建一个 Swagger3 配置类, SwaggerConfig
-/** * Swagger配置类 */ @Configuration @EnableOpenApi public class SwaggerConfig { @Bean public Docket docket(){ return new Docket(DocumentationType.OAS_30) .apiInfo(apiInfo()).enable(true) .select() //apis： 添加swagger接口提取范围(contoller层包名) .apis(RequestHandlerSelectors.basePackage(&amp;#34;com.example.troller&amp;#34;)) //.apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class)) .paths(PathSelectors.any()) .build(); } private ApiInfo apiInfo(){ return new ApiInfoBuilder() .title(&amp;#34;XX项目接口文档&amp;#34;) .description(&amp;#34;XX项目描述&amp;#34;) .contact(new Contact(&amp;#34;作者&amp;#34;, &amp;#34;作者URL&amp;#34;, &amp;#34;作者Email&amp;#34;)) .</description></item><item><title>Springboot集成FlyWay</title><link>https://monoya.top/tech/springboot%E9%9B%86%E6%88%90flyway/</link><pubDate>Thu, 24 Dec 2020 00:00:00 +0000</pubDate><guid>https://monoya.top/tech/springboot%E9%9B%86%E6%88%90flyway/</guid><description>依赖 在pom.xml添加maven依赖
-&amp;lt;!-- mysql 依赖 --&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;mysql&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;mysql-connector-java&amp;lt;/artifactId&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;!-- 数据库版本管理 依赖 --&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.flywaydb&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;flyway-core&amp;lt;/artifactId&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;!-- 数据库访问依赖 --&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;spring-boot-starter-jdbc&amp;lt;/artifactId&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;plugin&amp;gt; &amp;lt;groupId&amp;gt;org.flywaydb&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;flyway-maven-plugin&amp;lt;/artifactId&amp;gt; &amp;lt;/plugin&amp;gt; 配置 application.yml 在application.ym文件添加Flyway配置 需要先配置数据源（连接上数据库），可以自己换成druid
-# 数据源 spring: datasource: url: jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&amp;amp;characterEncoding=utf8&amp;amp;zeroDateTimeBehavior=convertToNull&amp;amp;allowMultiQueries=true&amp;amp;serverTimezone=PRC&amp;amp;useSSL=false username: root password: 密码 # MySQL 8.x以下: com.mysql.jdbc.Driver driver-class-name: com.mysql.cj.jdbc.Driver --- # FLYWAY (FlywayProperties) spring: flyway: url: jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC user: root password: 密码 baseline-on-migrate: true #在没有元数据表的情况下，针对非空Schema执行迁移时是否自动调用基线。 在resource目录下创建db/migration目录添加sql脚本 手动创建 db/migration 目录，然后在该目录下创建数据库脚本，数据库脚本的命名方式如下：
-V&amp;lt;VERSION&amp;gt;__&amp;lt;NAME&amp;gt;.sql #注意：是两条下划线 #比如V1_0_0__Create_Table_User.</description></item><item><title>在阿里云Ubuntu服务器上安装Mysql</title><link>https://monoya.top/tech/%E5%9C%A8%E9%98%BF%E9%87%8C%E4%BA%91ubuntu%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E5%AE%89%E8%A3%85mysql/</link><pubDate>Tue, 15 Dec 2020 00:00:00 +0000</pubDate><guid>https://monoya.top/tech/%E5%9C%A8%E9%98%BF%E9%87%8C%E4%BA%91ubuntu%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E5%AE%89%E8%A3%85mysql/</guid><description>安装 更新数据源 apt-get update 安装 MySQL apt-get install mysql-server 查看 MySQL 版本： mysqladmin -p -u root version 解决Mysql8.0大小敏感问题 备份配置文件，卸载，删除所有数据库和MySQL相关数据。:
-cp /etc/mysql/mysql.conf.d/mysqld.cnf /etc/mysql/mysql.conf.d/mysqld.cnf.backup service mysql stop apt-get --purge autoremove mysql-server rm -R /var/lib/mysql 恢复保存的配置文件，编辑文件（在[mysqld]行下增加一行）。:
-cp /etc/mysql/mysql.conf.d/mysqld.cnf.backup /etc/mysql/mysql.conf.d/mysqld.cnf vim /etc/mysql/mysql.conf.d/mysqld.cnf ... lower_case_table_names=1 ... 重新安装MySQL（保留配置文件），配置其他设置:
-apt-get install mysql-server service mysql start mysql_secure_installation mysql SHOW VARIABLES LIKE &amp;#39;lower_case_%&amp;#39;; exit mysql_secure_installation 安全配置向导 运行mysql_secure_installation会执行几个设置： &amp;ndash;为root用户设置密码 &amp;ndash;删除匿名账号 &amp;ndash;取消root用户远程登录 &amp;ndash;删除test库和对test库的访问权限 &amp;ndash;刷新授权表使修改生效
-为root用户设置密码 use mysql; ALTER USER root@localhost IDENTIFIED with caching_sha2_password BY &amp;#39;MyPasssword&amp;#39;; 检查状态 systemctl status mysql.</description></item></channel></rss>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Teches on Monoya's Blog</title><link>https://monoya.top/tech/</link><description>Recent content in Teches on Monoya's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-hans</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 19 Sep 2021 23:38:17 +0800</lastBuildDate><atom:link href="https://monoya.top/tech/index.xml" rel="self" type="application/rss+xml"/><item><title>Docker安装MySQL</title><link>https://monoya.top/tech/docker%E5%AE%89%E8%A3%85mysql/</link><pubDate>Sun, 19 Sep 2021 23:38:17 +0800</pubDate><guid>https://monoya.top/tech/docker%E5%AE%89%E8%A3%85mysql/</guid><description>拉取 MySQL 镜像 $ docker pull mysql:latest 运行容器 $ docker run -itd -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456 mysql 参数说明： -p 3306:3306 ：映射容器服务的 3306 端口到宿主机的 3306 端口，外部主机可以直接通过 宿主机ip:3306 访</description><content type="html"><![CDATA[<h2 id="拉取-mysql-镜像">拉取 MySQL 镜像</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ docker pull mysql:latest
+</span></span></code></pre></div><h2 id="运行容器">运行容器</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ docker run -itd -p 3306:3306 -e <span class="nv">MYSQL_ROOT_PASSWORD</span><span class="o">=</span><span class="m">123456</span> mysql
+</span></span></code></pre></div><p>参数说明：</p>
+<ul>
+<li><strong>-p 3306:3306</strong> ：映射容器服务的 3306 端口到宿主机的 3306 端口，外部主机可以直接通过 <strong>宿主机ip:3306</strong> 访问到 MySQL 的服务。</li>
+<li><strong>MYSQL_ROOT_PASSWORD=123456</strong>：设置 MySQL 服务 root 用户的密码。</li>
+<li><strong>mysql</strong>: 镜像</li>
+</ul>
+<h2 id="访问-mysql-服务">访问 MySQL 服务</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ mysql -h localhost -u root -p
+</span></span></code></pre></div>]]></content></item><item><title>Jrebel 完美激活</title><link>https://monoya.top/tech/jrebel-%E5%AE%8C%E7%BE%8E%E6%BF%80%E6%B4%BB/</link><pubDate>Fri, 12 Mar 2021 16:12:52 +0000</pubDate><guid>https://monoya.top/tech/jrebel-%E5%AE%8C%E7%BE%8E%E6%BF%80%E6%B4%BB/</guid><description>服务器地址监听服务器地址： http://jrebel.cicoding.cn GUID生成器： http://jrebel.cicoding.cn/guid 生成的格式： http://jrebel.cicoding.cn/BAA48E18-786D-853B-C4BF-AB31F79CAEFF # 参考文档 JRebel激活破解完美解决方式 - (Play) - 博客园 (cnblogs.com)</description><content type="html"><![CDATA[<h2 id="服务器地址监听服务器地址">服务器地址监听服务器地址：</h2>
+<p><a href="http://jrebel.cicoding.cn/">http://jrebel.cicoding.cn</a></p>
+<h2 id="guid生成器">GUID生成器：</h2>
+<p><a href="http://jrebel.cicoding.cn/guid">http://jrebel.cicoding.cn/guid</a></p>
+<h2 id="生成的格式">生成的格式：</h2>
+<p><a href="http://jrebel.cicoding.cn/BAA48E18-786D-853B-C4BF-AB31F79CAEFF">http://jrebel.cicoding.cn/BAA48E18-786D-853B-C4BF-AB31F79CAEFF</a></p>
+<p><img src="https://raw.githubusercontent.com/lqgl/repo/main/img/image-20210312161411277.png" alt="image-20210312161411277"></p>
+<p><img src="https://raw.githubusercontent.com/lqgl/repo/main/img/image-20210312161434747.png" alt="image-20210312161434747"></p>
+<h1 id="-参考文档"># 参考文档</h1>
+<p><a href="https://www.cnblogs.com/Twittery/p/13431578.html">JRebel激活破解完美解决方式 - (Play) - 博客园 (cnblogs.com)</a></p>
+]]></content></item><item><title>Ubuntu20.04安装MongoDB</title><link>https://monoya.top/tech/ubuntu%E4%B8%8B%E5%AE%89%E8%A3%85mongodb/</link><pubDate>Mon, 08 Mar 2021 00:00:00 +0000</pubDate><guid>https://monoya.top/tech/ubuntu%E4%B8%8B%E5%AE%89%E8%A3%85mongodb/</guid><description>本教程描述了如何在Ubuntu20.04上安装MongoDB4.4 安装MongoDB Ubuntu 20.04默认存储库中不提供最新版本的MongoDB，</description><content type="html"><![CDATA[<p>本教程描述了如何在Ubuntu20.04上安装MongoDB4.4</p>
+<h2 id="安装mongodb">安装MongoDB</h2>
+<p>Ubuntu 20.04默认存储库中不提供最新版本的MongoDB，因此需要在系统中添加官方的MongoDB存储库。</p>
+<h3 id="首先安装gnupg软件包">首先安装gnupg软件包</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">sudo apt-get install gnupg
+</span></span></code></pre></div><h3 id="导入包管理系统使用的公钥">导入包管理系统使用的公钥</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">wget -qO - https://www.mongodb.org/static/pgp/server-4.4.asc <span class="p">|</span> sudo apt-key add -
+</span></span></code></pre></div><h3 id="添加mongodb存储库">添加MongoDB存储库</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.4 multiverse&#34;</span> <span class="p">|</span> sudo tee /etc/apt/sources.list.d/mongodb-org-4.4.list
+</span></span></code></pre></div><h3 id="更新存储库">更新存储库</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">sudo apt-get update
+</span></span></code></pre></div><h3 id="使用以下命令安装mongodb">使用以下命令安装MongoDB</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">sudo apt install mongodb-org
+</span></span></code></pre></div><h3 id="启动mongodb服务">启动MongoDB服务</h3>
+<p>启动MongoDB，同时使用以下命令使其在重新启动时启动</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">sudo systemctl start mongod.service
+</span></span><span class="line"><span class="cl">sudo systemctl <span class="nb">enable</span> mongod
+</span></span></code></pre></div><h3 id="检查mongodb服务的状态">检查MongoDB服务的状态</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">sudo systemctl status mongod
+</span></span></code></pre></div><p>输出内容如下：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">● mongod.service - MongoDB Database Server
+</span></span><span class="line"><span class="cl">     Loaded: loaded <span class="o">(</span>/lib/systemd/system/mongod.service<span class="p">;</span> disabled<span class="p">;</span> vendor preset: enabled<span class="o">)</span>
+</span></span><span class="line"><span class="cl">     Active: active <span class="o">(</span>running<span class="o">)</span> since Sun 2020-12-20 19:51:14 PST<span class="p">;</span> 3min 22s ago
+</span></span><span class="line"><span class="cl">       Docs: https://docs.mongodb.org/manual
+</span></span><span class="line"><span class="cl">   Main PID: <span class="m">5818</span> <span class="o">(</span>mongod<span class="o">)</span>
+</span></span><span class="line"><span class="cl">     Memory: 58.5M
+</span></span><span class="line"><span class="cl">     CGroup: /system.slice/mongod.service
+</span></span><span class="line"><span class="cl">             └─5818 /usr/bin/mongod --config /etc/mongod.conf
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">12月 <span class="m">20</span> 19:51:14 admin systemd<span class="o">[</span>1<span class="o">]</span>: Started MongoDB Database Server.
+</span></span></code></pre></div><h3 id="验证安装是否成功完成">验证安装是否成功完成</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">mongo --eval <span class="s1">&#39;db.runCommand({ connectionStatus: 1 })&#39;</span>
+</span></span></code></pre></div><h2 id="配置mongodb">配置MongoDB</h2>
+<p>安装MongoDB后，默认的配置文件位于 <code>/etc/mongod.conf</code> ，我们可以通过编辑该文件进行相应的配置。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">vim /etc/mongod.conf
+</span></span></code></pre></div><p>编辑MongoDB配置文件后，重新启动mongod服务以使更改生效：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">sudo systemctl restart mongod
+</span></span></code></pre></div><h2 id="相关命令">相关命令</h2>
+<p>检查MongoDB服务状态：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">sudo systemctl status mongod
+</span></span></code></pre></div><p>关闭MongoDB服务：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">sudo systemctl stop mongod
+</span></span></code></pre></div><p>重新启动MongoDB服务：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">sudo systemctl restart mongod
+</span></span></code></pre></div><p>关闭开机启动：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">sudo systemctl disable mongod
+</span></span></code></pre></div><p>进入MongoDB shell：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">mongo
+</span></span></code></pre></div><h2 id="参考文档">参考文档</h2>
+<p><a href="https://www.cnblogs.com/bubbleboom/p/14167409.html">Ubuntu20.04安装MongoDB</a></p>
+]]></content></item><item><title>Ubuntu20.04安装和配置MySQL5.7</title><link>https://monoya.top/tech/ubuntu%E4%B8%8B%E5%AE%89%E8%A3%85mysql5.7/</link><pubDate>Mon, 08 Mar 2021 00:00:00 +0000</pubDate><guid>https://monoya.top/tech/ubuntu%E4%B8%8B%E5%AE%89%E8%A3%85mysql5.7/</guid><description>Ubuntu换源 更新数据源 备份原来的sorce文件 sudo cp /etc/apt/sources.list /etc/apt/sources.list.old 修改sources.list文件 sudo vim /etc/apt/sources.list 选择的是清华镜像源。将sources.lis</description><content type="html"><![CDATA[<h2 id="ubuntu换源">Ubuntu换源</h2>
+<h3 id="更新数据源">更新数据源</h3>
+<p>备份原来的sorce文件</p>
+<pre tabindex="0"><code>sudo cp /etc/apt/sources.list /etc/apt/sources.list.old
+</code></pre><p>修改sources.list文件</p>
+<pre tabindex="0"><code>sudo vim /etc/apt/sources.list
+</code></pre><p>选择的是清华镜像源。将sources.list内容清空，然后选择一个源粘贴到sources.list，保存退出。</p>
+<pre tabindex="0"><code># 清华镜像源
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial main restricted universe multiverse
+deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial main restricted universe multiverse
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-updates main restricted universe multiverse
+deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-updates main restricted universe multiverse
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-backports main restricted universe multiverse
+deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-backports main restricted universe multiverse
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-security main restricted universe multiverse
+deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-security main restricted universe multiverse
+</code></pre><p>更新镜像源和软件</p>
+<pre tabindex="0"><code># 更新镜像源
+sudo apt-get update
+</code></pre><h3 id="apt-get-install-方式安装-mysql">apt-get install 方式安装 MySQL</h3>
+<p>由于Mysql5.7有许多依赖</p>
+<pre tabindex="0"><code># 执行下面安装命令
+
+# 安装libtinfo5
+sudo apt-get install libtinfo5
+
+# 安装mysql-client-core-5.7
+sudo apt-get install mysql-client-core-5.7 
+
+# 安装mysql5.7客户端
+sudo apt-get install mysql-client-5.7 
+
+# 安装mysql5.7服务端
+sudo apt-get install mysql-server-5.7
+ 
+</code></pre><p>选择配置项，设置root密码</p>
+<h3 id="安装完成后查看mysql版本和服务">安装完成后查看mysql版本和服务</h3>
+<pre tabindex="0"><code>mysql -V # 查看mysql版本
+netstat -tap | grep mysql # 查看mysql服务
+</code></pre><h3 id="检查状态">检查状态</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo netstat -tap <span class="p">|</span> grep mysql
+</span></span></code></pre></div><h2 id="配置远程访问">配置远程访问</h2>
+<ul>
+<li>修改配置文件</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">vi /etc/mysql/mysql.conf.d/mysqld.cnf
+</span></span></code></pre></div><ul>
+<li>注释掉(语句前面加上 # 即可)：</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">bind-address = 127.0.0.1
+</span></span></code></pre></div><ul>
+<li>重启 MySQL</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">service mysql restart
+</span></span></code></pre></div><ul>
+<li>登录 MySQL</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">mysql -u root -p
+</span></span></code></pre></div><ul>
+<li>授权 root 用户允许所有人连接</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">grant all privileges on *.* to &#39;root&#39;@&#39;%&#39; identified by &#39;你的 mysql root 账户密码&#39;;
+</span></span><span class="line"><span class="cl">flush privileges;
+</span></span><span class="line"><span class="cl">重启mysql服务
+</span></span></code></pre></div><h3 id="因弱口令无法成功授权解决步骤">因弱口令无法成功授权解决步骤</h3>
+<ul>
+<li>查看和设置密码安全级别</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">select @@validate_password_policy;
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">set global validate_password_policy=0;
+</span></span></code></pre></div><ul>
+<li>查看和设置密码长度限制</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">select @@validate_password_length;
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">set global validate_password_length=1;
+</span></span></code></pre></div><h2 id="远程连接mysql遇到的问题">远程连接mysql遇到的问题</h2>
+<pre tabindex="0"><code>Can&#39;t connect to MySQL server on &#39;x.x.x.x&#39; (10060)
+</code></pre><h3 id="解决方法">解决方法：</h3>
+<p>服务器配置安全组，开启相应的端口号</p>
+<h2 id="常用命令">常用命令</h2>
+<h3 id="启动">启动</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">service mysql start
+</span></span></code></pre></div><h3 id="停止">停止</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">service mysql stop
+</span></span></code></pre></div><h3 id="重启">重启</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">service mysql restart
+</span></span></code></pre></div><h2 id="其它配置">其它配置</h2>
+<p>修改配置 <code>mysqld.cnf</code> 配置文件</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">vi /etc/mysql/mysql.conf.d/mysqld.cnf
+</span></span></code></pre></div><h3 id="配置默认字符集">配置默认字符集</h3>
+<p>在 <code>[mysqld]</code> 节点上增加如下配置</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">[client]
+</span></span><span class="line"><span class="cl">default-character-set=utf8
+</span></span></code></pre></div><p>在 <code>[mysqld]</code> 节点底部增加如下配置</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">default-storage-engine=INNODB
+</span></span><span class="line"><span class="cl">character-set-server=utf8
+</span></span><span class="line"><span class="cl">collation-server=utf8_general_ci
+</span></span></code></pre></div><h3 id="配置忽略数据库大小写敏感">配置忽略数据库大小写敏感</h3>
+<p>在 <code>[mysqld]</code> 节点底部增加如下配置</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">lower-case-table-names = 1
+</span></span></code></pre></div><h1 id="卸载mysql">卸载mysql：</h1>
+<pre tabindex="0"><code>1.sudo apt-get autoremove mysql* --purge
+2.sudo apt-get remove mysql-server
+3.sudo apt-get remove mysql-common
+ 
+# 清理残留数据 
+sudo dpkg -l |grep mysql|awk &#39;{print $2}&#39; |sudo xargs dpkg -P 
+sudo rm -rf /etc/mysql/ 
+sudo rm -rf /var/lib/mysql
+ 
+# 检查是否删除完毕
+whereis mysql
+sudo find / -name mysql
+在终端中查看MySQL的依赖项：
+dpkg --list|grep mysql
+</code></pre><h3 id="终端无法退格">终端无法退格：</h3>
+<pre tabindex="0"><code># apt-get install ncurses-base
+# apt-get install ncurses-term
+然后reboot一下就可以了
+</code></pre><h2 id="参考文档">参考文档</h2>
+<p><a href="https://www.funtl.com/zh/linux/Linux-%E5%AE%89%E8%A3%85-MySQL.html#%E6%9C%AC%E8%8A%82%E8%A7%86%E9%A2%91">Linux 安装 MySQL</a></p>
+]]></content></item><item><title>Ubuntu安装Java</title><link>https://monoya.top/tech/ubuntu%E4%B8%8B%E5%AE%89%E8%A3%85java/</link><pubDate>Mon, 08 Mar 2021 00:00:00 +0000</pubDate><guid>https://monoya.top/tech/ubuntu%E4%B8%8B%E5%AE%89%E8%A3%85java/</guid><description>概述 此处以 JDK 1.8.0_152 为例 下载地址 http://www.oracle.com/technetwork/java/javase/downloads/index.html 解压缩并移动到指定目录 解压缩 tar -zxvf jdk-8u152-linux-x64.tar.gz 创建目录 mkdir -p /usr/local/java 移动安装包 mv jdk1.8.0_152/ /usr/local/java/ 设置所有者 chown -R root:root /usr/local/java/ 配置环境变量 配置系统环境变量 vi</description><content type="html"><![CDATA[<h2 id="概述">概述</h2>
+<p>此处以 JDK 1.8.0_152 为例</p>
+<h2 id="下载地址">下载地址</h2>
+<p><a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">http://www.oracle.com/technetwork/java/javase/downloads/index.html</a></p>
+<h2 id="解压缩并移动到指定目录">解压缩并移动到指定目录</h2>
+<h3 id="解压缩">解压缩</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">tar -zxvf jdk-8u152-linux-x64.tar.gz
+</span></span></code></pre></div><h3 id="创建目录">创建目录</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">mkdir -p /usr/local/java
+</span></span></code></pre></div><h3 id="移动安装包">移动安装包</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">mv jdk1.8.0_152/ /usr/local/java/
+</span></span></code></pre></div><h3 id="设置所有者">设置所有者</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">chown -R root:root /usr/local/java/
+</span></span></code></pre></div><h2 id="配置环境变量">配置环境变量</h2>
+<h3 id="配置系统环境变量">配置系统环境变量</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">vi /etc/environment
+</span></span></code></pre></div><h3 id="添加如下语句">添加如下语句</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">PATH=&#34;/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games&#34;
+</span></span><span class="line"><span class="cl">export JAVA_HOME=/usr/local/java/jdk1.8.0_152
+</span></span><span class="line"><span class="cl">export JRE_HOME=/usr/local/java/jdk1.8.0_152/jre
+</span></span><span class="line"><span class="cl">export CLASSPATH=$CLASSPATH:$JAVA_HOME/lib:$JAVA_HOME/jre/lib
+</span></span></code></pre></div><h3 id="配置用户环境变量">配置用户环境变量</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">vi /etc/profile
+</span></span></code></pre></div><h3 id="添加如下语句-1">添加如下语句</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">if [ &#34;$PS1&#34; ]; then
+</span></span><span class="line"><span class="cl">  if [ &#34;$BASH&#34; ] &amp;&amp; [ &#34;$BASH&#34; != &#34;/bin/sh&#34; ]; then
+</span></span><span class="line"><span class="cl">    # The file bash.bashrc already sets the default PS1.
+</span></span><span class="line"><span class="cl">    # PS1=&#39;\h:\w\$ &#39;
+</span></span><span class="line"><span class="cl">    if [ -f /etc/bash.bashrc ]; then
+</span></span><span class="line"><span class="cl">      . /etc/bash.bashrc
+</span></span><span class="line"><span class="cl">    fi
+</span></span><span class="line"><span class="cl">  else
+</span></span><span class="line"><span class="cl">    if [ &#34;`id -u`&#34; -eq 0 ]; then
+</span></span><span class="line"><span class="cl">      PS1=&#39;# &#39;
+</span></span><span class="line"><span class="cl">    else
+</span></span><span class="line"><span class="cl">      PS1=&#39;$ &#39;
+</span></span><span class="line"><span class="cl">    fi
+</span></span><span class="line"><span class="cl">  fi
+</span></span><span class="line"><span class="cl">fi
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">export JAVA_HOME=/usr/local/java/jdk1.8.0_152
+</span></span><span class="line"><span class="cl">export JRE_HOME=/usr/local/java/jdk1.8.0_152/jre
+</span></span><span class="line"><span class="cl">export CLASSPATH=$CLASSPATH:$JAVA_HOME/lib:$JAVA_HOME/jre/lib
+</span></span><span class="line"><span class="cl">export PATH=$JAVA_HOME/bin:$JAVA_HOME/jre/bin:$PATH:$HOME/bin
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">if [ -d /etc/profile.d ]; then
+</span></span><span class="line"><span class="cl">  for i in /etc/profile.d/*.sh; do
+</span></span><span class="line"><span class="cl">    if [ -r $i ]; then
+</span></span><span class="line"><span class="cl">      . $i
+</span></span><span class="line"><span class="cl">    fi
+</span></span><span class="line"><span class="cl">  done
+</span></span><span class="line"><span class="cl">  unset i
+</span></span><span class="line"><span class="cl">fi
+</span></span></code></pre></div><h3 id="使用户环境变量生效">使用户环境变量生效</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">source /etc/profile
+</span></span></code></pre></div><h2 id="测试是否安装成功">测试是否安装成功</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">root@UbuntuBase:/usr/local/java# java -version
+</span></span><span class="line"><span class="cl">java version &#34;1.8.0_152&#34;
+</span></span><span class="line"><span class="cl">Java(TM) SE Runtime Environment (build 1.8.0_152-b16)
+</span></span><span class="line"><span class="cl">Java HotSpot(TM) 64-Bit Server VM (build 25.152-b16, mixed mode)
+</span></span></code></pre></div><h2 id="为其他用户更新用户环境变量">为其他用户更新用户环境变量</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">su monoya
+</span></span><span class="line"><span class="cl">source /etc/profile
+</span></span></code></pre></div>]]></content></item><item><title>SpringBoot集成Druid</title><link>https://monoya.top/tech/springboot%E9%9B%86%E6%88%90druid/</link><pubDate>Fri, 05 Mar 2021 00:00:00 +0000</pubDate><guid>https://monoya.top/tech/springboot%E9%9B%86%E6%88%90druid/</guid><description>概述 Druid 是阿里巴巴开源平台上的一个项目，整个项目由数据库连接池、插件框架和 SQL 解析器组成。该项目主要是为了扩展 JDBC 的一些限制，可以让程序员实现一些</description><content type="html"><![CDATA[<h2 id="概述">概述</h2>
+<p>Druid 是阿里巴巴开源平台上的一个项目，整个项目由数据库连接池、插件框架和 SQL 解析器组成。该项目主要是为了扩展 JDBC 的一些限制，可以让程序员实现一些特殊的需求，比如向密钥服务请求凭证、统计 SQL 信息、SQL 性能收集、SQL 注入检查、SQL 翻译等，程序员可以通过定制来实现自己需要的功能。</p>
+<p>Druid 是目前最好的数据库连接池，在功能、性能、扩展性方面，都超过其他数据库连接池，包括 DBCP、C3P0、BoneCP、Proxool、JBoss DataSource。Druid 已经在阿里巴巴部署了超过 600 个应用，经过多年生产环境大规模部署的严苛考验。Druid 是阿里巴巴开发的号称为监控而生的数据库连接池！</p>
+<h2 id="引入依赖">引入依赖</h2>
+<p>在 <code>pom.xml</code> 文件中引入 <code>druid-spring-boot-starter</code> 依赖</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;dependency&gt;</span>
+</span></span><span class="line"><span class="cl">     <span class="nt">&lt;groupId&gt;</span>com.alibaba<span class="nt">&lt;/groupId&gt;</span>
+</span></span><span class="line"><span class="cl">     <span class="nt">&lt;artifactId&gt;</span>druid-spring-boot-starter<span class="nt">&lt;/artifactId&gt;</span>
+</span></span><span class="line"><span class="cl">     <span class="nt">&lt;version&gt;</span>1.2.5<span class="nt">&lt;/version&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/dependency&gt;</span>
+</span></span></code></pre></div><p>引入数据库连接依赖</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;dependency&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;groupId&gt;</span>mysql<span class="nt">&lt;/groupId&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;artifactId&gt;</span>mysql-connector-java<span class="nt">&lt;/artifactId&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;scope&gt;</span>runtime<span class="nt">&lt;/scope&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/dependency&gt;</span>
+</span></span></code></pre></div><h2 id="配置-applicationyml">配置 <code>application.yml</code></h2>
+<p>在 <code>application.yml</code> 中配置数据库连接</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="line"><span class="cl"><span class="nt">spring</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">datasource</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">druid</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l">jdbc:mysql://ip:port/dbname?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l">root</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="m">123456</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">initial-size</span><span class="p">:</span><span class="w"> </span><span class="m">1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">min-idle</span><span class="p">:</span><span class="w"> </span><span class="m">1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">max-active</span><span class="p">:</span><span class="w"> </span><span class="m">20</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">test-on-borrow</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="c"># MySQL 8.x: com.mysql.cj.jdbc.Driver</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">driver-class-name</span><span class="p">:</span><span class="w"> </span><span class="l">com.mysql.jdbc.Driver</span><span class="w">
+</span></span></span></code></pre></div>]]></content></item><item><title>SpringBoot集成MyBatis</title><link>https://monoya.top/tech/springboot%E9%9B%86%E6%88%90mybatis/</link><pubDate>Fri, 05 Mar 2021 00:00:00 +0000</pubDate><guid>https://monoya.top/tech/springboot%E9%9B%86%E6%88%90mybatis/</guid><description>概述 MyBatis是一个Java持久化框架，它通过XML描述符或注解把对象与存储过程或SQL语句关联起来，映射成数据库内对应的纪录。与其他对</description><content type="html"><![CDATA[<h2 id="概述">概述</h2>
+<p><strong>MyBatis</strong>是一个<a href="https://zh.wikipedia.org/wiki/Java">Java</a><a href="https://zh.wikipedia.org/wiki/%E6%8C%81%E4%B9%85%E5%8C%96%E6%A1%86%E6%9E%B6">持久化框架</a>，它通过<a href="https://zh.wikipedia.org/wiki/XML">XML</a>描述符或注解把<a href="https://zh.wikipedia.org/wiki/%E5%AF%B9%E8%B1%A1_(%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6)">对象</a>与<a href="https://zh.wikipedia.org/wiki/%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B">存储过程</a>或<a href="https://zh.wikipedia.org/wiki/SQL">SQL</a>语句关联起来，映射成数据库内对应的纪录。与其他<a href="https://zh.wikipedia.org/wiki/%E5%AF%B9%E8%B1%A1%E5%85%B3%E7%B3%BB%E6%98%A0%E5%B0%84">对象关系映射</a>框架不同，MyBatis没有将<a href="https://zh.wikipedia.org/wiki/Java">Java</a><a href="https://zh.wikipedia.org/wiki/%E5%AF%B9%E8%B1%A1_(%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6)">对象</a>与<a href="https://zh.wikipedia.org/wiki/%E6%95%B0%E6%8D%AE%E5%BA%93">数据库</a>表关联起来，而是将Java方法与<a href="https://zh.wikipedia.org/wiki/SQL">SQL</a>语句关联。MyBatis允许用户充分利用<a href="https://zh.wikipedia.org/wiki/%E6%95%B0%E6%8D%AE%E5%BA%93">数据库</a>的各种功能，例如存储过程、<a href="https://zh.wikipedia.org/wiki/%E8%A7%86%E5%9B%BE">视图</a>、各种复杂的查询以及某数据库的专有特性。</p>
+<h2 id="引入依赖">引入依赖</h2>
+<p>在 <code>pom.xml</code> 文件中引入 <code>mapper-spring-boot-starter</code> 依赖，该依赖会自动引入 MyBaits 相关依赖</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl">        <span class="nt">&lt;dependency&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;groupId&gt;</span>org.mybatis.spring.boot<span class="nt">&lt;/groupId&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;artifactId&gt;</span>mybatis-spring-boot-starter<span class="nt">&lt;/artifactId&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;version&gt;</span>2.1.4<span class="nt">&lt;/version&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;/dependency&gt;</span>
+</span></span></code></pre></div><h2 id="配置-applicationyml">配置 <code>application.yml</code></h2>
+<p>配置 MyBatis</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl">mybatis:
+</span></span><span class="line"><span class="cl">  type-aliases-package: com.monoya.cake.business.model  # 实体类的存放路径
+</span></span><span class="line"><span class="cl">  mapper-locations: classpath:mapper/*.xml # mapper.xml的存放路径
+</span></span></code></pre></div>]]></content></item><item><title>SpringBoot集成Swagger3.0.0</title><link>https://monoya.top/tech/springboot%E9%9B%86%E6%88%90swagger3/</link><pubDate>Fri, 05 Mar 2021 00:00:00 +0000</pubDate><guid>https://monoya.top/tech/springboot%E9%9B%86%E6%88%90swagger3/</guid><description>概述 Swagger 是一个规范和完整的框架，用于生成、描述、调用和可视化 RESTful 风格的 Web 服务。 总体目标是使客户端和文件系统作为服务器以同样的速度来更新。文件的方</description><content type="html"><![CDATA[<h2 id="概述">概述</h2>
+<p>Swagger 是一个规范和完整的框架，用于生成、描述、调用和可视化 RESTful 风格的 Web 服务。</p>
+<p>总体目标是使客户端和文件系统作为服务器以同样的速度来更新。文件的方法、参数和模型紧密集成到服务器端的代码，允许 API 来始终保持同步。</p>
+<p><strong>3.0版本在配置上与2.9稍有差别，包括依赖包改为: springfox-boot-starter，启用注解更改为: <code>@EnableOpenApi</code>等。</strong></p>
+<p><a href="https://github.com/springfox/springfox/releases">swagger 3.0 release notes</a></p>
+<h2 id="引入依赖">引入依赖</h2>
+<p>在 <code>pom.xml</code> 文件中引入 <code>springfox-boot-starter</code> 依赖，该依赖会自动引入 <code>Swagger</code> 相关依赖</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl">            <span class="nt">&lt;dependency&gt;</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&lt;groupId&gt;</span>io.springfox<span class="nt">&lt;/groupId&gt;</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&lt;artifactId&gt;</span>springfox-boot-starter<span class="nt">&lt;/artifactId&gt;</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&lt;version&gt;</span>3.0.0<span class="nt">&lt;/version&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;/dependency&gt;</span>
+</span></span></code></pre></div><h2 id="自定义配置类">自定义配置类</h2>
+<p>创建一个 Swagger3 配置类, <code>SwaggerConfig</code></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">* Swagger配置类
+</span></span></span><span class="line"><span class="cl"><span class="cm">*/</span>
+</span></span><span class="line"><span class="cl"><span class="nd">@Configuration</span>
+</span></span><span class="line"><span class="cl"><span class="nd">@EnableOpenApi</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SwaggerConfig</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nd">@Bean</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">Docket</span> <span class="nf">docket</span><span class="o">(){</span>
+</span></span><span class="line"><span class="cl">       <span class="k">return</span> <span class="k">new</span> <span class="n">Docket</span><span class="o">(</span><span class="n">DocumentationType</span><span class="o">.</span><span class="na">OAS_30</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">                <span class="o">.</span><span class="na">apiInfo</span><span class="o">(</span><span class="n">apiInfo</span><span class="o">()).</span><span class="na">enable</span><span class="o">(</span><span class="kc">true</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">                <span class="o">.</span><span class="na">select</span><span class="o">()</span>
+</span></span><span class="line"><span class="cl">                <span class="c1">//apis： 添加swagger接口提取范围(contoller层包名)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="o">.</span><span class="na">apis</span><span class="o">(</span><span class="n">RequestHandlerSelectors</span><span class="o">.</span><span class="na">basePackage</span><span class="o">(</span><span class="s">&#34;com.example.troller&#34;</span><span class="o">))</span>
+</span></span><span class="line"><span class="cl">                <span class="c1">//.apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class))
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="o">.</span><span class="na">paths</span><span class="o">(</span><span class="n">PathSelectors</span><span class="o">.</span><span class="na">any</span><span class="o">())</span>
+</span></span><span class="line"><span class="cl">                <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">ApiInfo</span> <span class="nf">apiInfo</span><span class="o">(){</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="k">new</span> <span class="n">ApiInfoBuilder</span><span class="o">()</span>
+</span></span><span class="line"><span class="cl">                <span class="o">.</span><span class="na">title</span><span class="o">(</span><span class="s">&#34;XX项目接口文档&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">                <span class="o">.</span><span class="na">description</span><span class="o">(</span><span class="s">&#34;XX项目描述&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">                <span class="o">.</span><span class="na">contact</span><span class="o">(</span><span class="k">new</span> <span class="n">Contact</span><span class="o">(</span><span class="s">&#34;作者&#34;</span><span class="o">,</span> <span class="s">&#34;作者URL&#34;</span><span class="o">,</span> <span class="s">&#34;作者Email&#34;</span><span class="o">))</span>
+</span></span><span class="line"><span class="cl">                <span class="o">.</span><span class="na">version</span><span class="o">(</span><span class="s">&#34;1.0&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">                <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><h2 id="在你的-controller-上添加-swagger-注解">在你的 Controller 上添加 swagger 注解</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@Api</span><span class="o">(</span><span class="n">tags</span><span class="o">=</span><span class="s">&#34;用户管理&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="nd">@RestController</span>
+</span></span><span class="line"><span class="cl"><span class="nd">@RequestMapping</span><span class="o">(</span><span class="s">&#34;/user&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">UserController</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kd">static</span> <span class="n">Logger</span> <span class="n">logger</span> <span class="o">=</span> <span class="n">LoggerFactory</span><span class="o">.</span><span class="na">getLogger</span><span class="o">(</span><span class="n">UserController</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@Resource</span>
+</span></span><span class="line"><span class="cl">    <span class="n">UserService</span> <span class="n">userService</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">	<span class="nd">@ApiOperation</span><span class="o">(</span><span class="s">&#34;查询所有用户&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nd">@GetMapping</span><span class="o">(</span><span class="s">&#34;/getUser4Page&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="nf">getUser4Page</span><span class="o">(){</span>
+</span></span><span class="line"><span class="cl">        <span class="n">logger</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="s">&#34;开始查询所有用户&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">userService</span><span class="o">.</span><span class="na">getUser4Page</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="o">...</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><h2 id="如启用了访问权限还需将-swagger相关-uri-允许匿名访问">如启用了访问权限，还需将 swagger相关 uri 允许匿名访问</h2>
+<p>具体需要添加的uri有：</p>
+<pre tabindex="0"><code>/swagger**/**
+/webjars/**
+/v3/**
+/doc.html
+</code></pre><h2 id="启动应用访问-httpipportswagger-uiindexhtml">启动应用，访问 <code>http://ip:port/swagger-ui/index.html</code></h2>
+<p><img src="https://raw.githubusercontent.com/lqgl/repo/main/img/image-20210304095648667.png" alt="image-20210304095648667"></p>
+<h2 id="参考文档">参考文档</h2>
+<p><a href="https://segmentfault.com/a/1190000037455077">spring boot 集成 swagger 3.0 指南</a></p>
+]]></content></item><item><title>Springboot集成FlyWay</title><link>https://monoya.top/tech/springboot%E9%9B%86%E6%88%90flyway/</link><pubDate>Thu, 24 Dec 2020 00:00:00 +0000</pubDate><guid>https://monoya.top/tech/springboot%E9%9B%86%E6%88%90flyway/</guid><description>依赖 在pom.xml添加maven依赖 &amp;lt;!-- mysql 依赖 --&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;mysql&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;mysql-connector-java&amp;lt;/artifactId&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;!-- 数据库版本管理 依赖 --&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.flywaydb&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;flyway-core&amp;lt;/artifactId&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;!-- 数据库访问依赖 --&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;spring-boot-starter-jdbc&amp;lt;/artifactId&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;plugin&amp;gt; &amp;lt;groupId&amp;gt;org.flywaydb&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;flyway-maven-plugin&amp;lt;/artifactId&amp;gt; &amp;lt;/plugin&amp;gt; 配置 application.yml 在applic</description><content type="html"><![CDATA[<h2 id="依赖">依赖</h2>
+<p>在pom.xml添加maven依赖</p>
+<pre tabindex="0"><code>&lt;!-- mysql 依赖 --&gt;
+&lt;dependency&gt;
+&lt;groupId&gt;mysql&lt;/groupId&gt;
+&lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;
+&lt;/dependency&gt;
+
+&lt;!-- 数据库版本管理 依赖 --&gt;
+&lt;dependency&gt;
+&lt;groupId&gt;org.flywaydb&lt;/groupId&gt;
+&lt;artifactId&gt;flyway-core&lt;/artifactId&gt;
+&lt;/dependency&gt;
+
+&lt;!-- 数据库访问依赖 --&gt;
+&lt;dependency&gt;
+&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+&lt;artifactId&gt;spring-boot-starter-jdbc&lt;/artifactId&gt;
+&lt;/dependency&gt;
+</code></pre><pre tabindex="0"><code>&lt;plugin&gt;
+    &lt;groupId&gt;org.flywaydb&lt;/groupId&gt;
+    &lt;artifactId&gt;flyway-maven-plugin&lt;/artifactId&gt;
+&lt;/plugin&gt;
+</code></pre><h2 id="配置-applicationyml">配置 <code>application.yml</code></h2>
+<p>在application.ym文件添加Flyway配置
+需要先配置数据源（连接上数据库），可以自己换成druid</p>
+<pre tabindex="0"><code># 数据源
+spring:
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&amp;characterEncoding=utf8&amp;zeroDateTimeBehavior=convertToNull&amp;allowMultiQueries=true&amp;serverTimezone=PRC&amp;useSSL=false
+    username: root
+    password: 密码
+    # MySQL 8.x以下: com.mysql.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
+---
+# FLYWAY (FlywayProperties)
+spring:
+  flyway:
+    url: jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+    user: root
+    password: 密码
+    baseline-on-migrate: true #在没有元数据表的情况下，针对非空Schema执行迁移时是否自动调用基线。
+</code></pre><h3 id="在resource目录下创建dbmigration目录添加sql脚本">在resource目录下创建db/migration目录添加sql脚本</h3>
+<p><img src="https://raw.githubusercontent.com/lqgl/repo/main/img/20201224132145.png" alt="">
+手动创建 db/migration 目录，然后在该目录下创建数据库脚本，数据库脚本的命名方式如下：</p>
+<pre tabindex="0"><code>V&lt;VERSION&gt;__&lt;NAME&gt;.sql #注意：是两条下划线
+#比如V1_0_0__Create_Table_User.sql
+</code></pre><p>首先是大写字母 V，然后是版本号，要是有小版本可以用下划线隔开，例如 2_1，版本号后面是<code>两个下划线</code>，然后是脚本名称，文件后缀是 <code>.sql</code>。</p>
+<h3 id="验证是否成功">验证是否成功:</h3>
+<p>项目启动时,会运行flyway执行sql语句.生成schema_version表,用于记录sql执行情况.
+去数据库<code>test</code>看<code>flyway_schema_history</code>表
+<img src="https://raw.githubusercontent.com/lqgl/repo/main/img/20201224132524.png" alt=""></p>
+<h2 id="其他配置">其他配置</h2>
+<pre tabindex="0"><code>spring:
+  flyway:
+    enabled: true #是否开启 flyway，默认就是开启的
+    url: jdbc:mysql://127.0.0.1:3306/mygame?serverTimezone=UTC # 地址
+    user: root #用户名
+    password: 365472 #密码
+    baseline-on-migrate: true #在没有元数据表的情况下，针对非空Schema执行迁移时是否自动调用基线。
+    encoding: UTF-8 #flyway 字符编码
+    locations: classpath:db/migration #sql 脚本的目录，默认是 classpath:db/migration，如果有多个，用 , 隔开
+    clean-disabled: true #这个属性非常关键，它表示是否要清除已有库下的表，如果执行的脚本是 V1__xxx.sql，那么会先清除已有库下的表，然后再执行脚本，这在开发环境下还挺方便，但是在生产环境下就要命了，而且它默认就是要清除，生产环境一定要自己配置设置为 true。
+    table: flyway_schema_history #配置数据库信息表的名称，默认是 flyway_schema_history。
+</code></pre><h2 id="参考文档">参考文档</h2>
+<p><a href="https://blog.csdn.net/qq_41402200/article/details/89247317">SpringBoot整合Flyway</a>
+<a href="https://baijiahao.baidu.com/s?id=1659024978275677262&amp;wfr=spider&amp;for=pc">简化Spring Boot项目部署，Flyway搞起来</a></p>
+]]></content></item><item><title>在阿里云Ubuntu服务器上安装Mysql</title><link>https://monoya.top/tech/%E5%9C%A8%E9%98%BF%E9%87%8C%E4%BA%91ubuntu%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E5%AE%89%E8%A3%85mysql/</link><pubDate>Tue, 15 Dec 2020 00:00:00 +0000</pubDate><guid>https://monoya.top/tech/%E5%9C%A8%E9%98%BF%E9%87%8C%E4%BA%91ubuntu%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E5%AE%89%E8%A3%85mysql/</guid><description>安装 更新数据源 apt-get update 安装 MySQL apt-get install mysql-server 查看 MySQL 版本： mysqladmin -p -u root version 解决Mysql8.0大小敏感问题 备份配置文件，卸载，删除所有数据库和MySQL相关数据。</description><content type="html"><![CDATA[<h2 id="安装">安装</h2>
+<h3 id="更新数据源">更新数据源</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">apt-get update
+</span></span></code></pre></div><h3 id="安装-mysql">安装 MySQL</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">apt-get install mysql-server
+</span></span></code></pre></div><h3 id="查看-mysql-版本">查看 MySQL 版本：</h3>
+<pre tabindex="0"><code>mysqladmin -p -u root version
+</code></pre><h2 id="解决mysql80大小敏感问题">解决Mysql8.0大小敏感问题</h2>
+<p>备份配置文件，卸载，删除所有数据库和MySQL相关数据。:</p>
+<pre tabindex="0"><code>cp /etc/mysql/mysql.conf.d/mysqld.cnf /etc/mysql/mysql.conf.d/mysqld.cnf.backup
+service mysql stop
+apt-get --purge autoremove mysql-server
+rm -R /var/lib/mysql
+</code></pre><p>恢复保存的配置文件，编辑文件（在[mysqld]行下增加一行）。:</p>
+<pre tabindex="0"><code>cp /etc/mysql/mysql.conf.d/mysqld.cnf.backup /etc/mysql/mysql.conf.d/mysqld.cnf
+vim /etc/mysql/mysql.conf.d/mysqld.cnf
+
+...
+lower_case_table_names=1
+...
+</code></pre><p>重新安装MySQL（保留配置文件），配置其他设置:</p>
+<pre tabindex="0"><code>apt-get install mysql-server
+service mysql start
+mysql_secure_installation
+mysql
+
+SHOW VARIABLES LIKE &#39;lower_case_%&#39;;
+exit
+</code></pre><p><img src="https://raw.githubusercontent.com/lqgl/repo/main/img/20201215130757.png" alt=""></p>
+<h3 id="mysql_secure_installation-安全配置向导"><code>mysql_secure_installation</code> 安全配置向导</h3>
+<p>运行mysql_secure_installation会执行几个设置：
+&ndash;为root用户设置密码
+&ndash;删除匿名账号
+&ndash;取消root用户远程登录
+&ndash;删除test库和对test库的访问权限
+&ndash;刷新授权表使修改生效</p>
+<h3 id="为root用户设置密码">为root用户设置密码</h3>
+<pre tabindex="0"><code>use mysql;
+ALTER USER root@localhost IDENTIFIED with caching_sha2_password BY &#39;MyPasssword&#39;;
+</code></pre><h3 id="检查状态">检查状态</h3>
+<pre tabindex="0"><code>systemctl status mysql.service
+</code></pre><h3 id="配置远程访问">配置远程访问</h3>
+<ul>
+<li>修改配置文件</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">vi /etc/mysql/mysql.conf.d/mysqld.cnf
+</span></span></code></pre></div><ul>
+<li>注释掉(语句前面加上 # 即可))：</li>
+</ul>
+<pre tabindex="0"><code># bind-address = 127.0.0.1
+或者
+bind-address = 0.0.0.0
+</code></pre><ul>
+<li>重启 MySQL</li>
+</ul>
+<pre tabindex="0"><code>service mysql restart
+</code></pre><ul>
+<li>登录 MySQL</li>
+</ul>
+<pre tabindex="0"><code>mysql -u root -p
+</code></pre><ul>
+<li>授权 root 用户允许所有人连接</li>
+</ul>
+<pre tabindex="0"><code>#创建账户
+create user &#39;root&#39;@&#39;%&#39; identified by  &#39;你的 mysql root 账户密码&#39;;
+grant all privileges on *.* to &#39;root&#39;@&#39;%&#39; with grant option;
+flush privileges;
+ALTER USER &#39;root&#39;@&#39;%&#39; IDENTIFIED WITH mysql_native_password BY &#39;你的 mysql root 账户密码&#39;;
+</code></pre><ul>
+<li>更新所有操作权限</li>
+</ul>
+<pre tabindex="0"><code>flush privileges;
+</code></pre><h2 id="常用命令">常用命令</h2>
+<h3 id="启动">启动</h3>
+<pre tabindex="0"><code>service mysql start
+</code></pre><h3 id="停止">停止</h3>
+<pre tabindex="0"><code>service mysql stop
+</code></pre><h3 id="重启">重启</h3>
+<pre tabindex="0"><code>service mysql restart
+</code></pre><h2 id="参考文档">参考文档</h2>
+<p><a href="https://stackoverflow.com/questions/53103588/lower-case-table-names-1-on-ubuntu-18-04-doesnt-let-mysql-to-start/53175727#53175727">Mysql8.0大小写敏感</a>
+<a href="https://blog.csdn.net/crazy_zh/article/details/109164552">ubuntu下mysql8.0.21安装及修改root用户密码</a>
+<a href="https://www.cnblogs.com/chengmi/p/12403761.html">SQLyog连接MySQL8报错:2058的解决方法</a>
+<a href="https://blog.csdn.net/shenhonglei1234/article/details/84786443?utm_medium=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromBaidu-1.control&amp;depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromBaidu-1.control">mysql8.0版本创建账户和赋予权限</a>
+<a href="https://blog.csdn.net/qq_32786873/article/details/78846008">MySQL&mdash;-mysql_secure_installation 安全配置向导</a></p>
+]]></content></item><item><title>使用 github repo + PicGo 搭建博客图床</title><link>https://monoya.top/tech/%E4%BD%BF%E7%94%A8github%E4%BB%93%E5%BA%93%E4%B8%8Epicgo%E5%81%9A%E5%9B%BE%E5%BA%8A/</link><pubDate>Mon, 14 Dec 2020 00:00:00 +0000</pubDate><guid>https://monoya.top/tech/%E4%BD%BF%E7%94%A8github%E4%BB%93%E5%BA%93%E4%B8%8Epicgo%E5%81%9A%E5%9B%BE%E5%BA%8A/</guid><description>创建github repo,并生成token 创建仓库 生成token 进入个人中心设置 进入Developer settings中，选择Persona</description><content type="html"><![CDATA[<h2 id="创建github-repo并生成token">创建github repo,并生成token</h2>
+<h3 id="创建仓库">创建仓库</h3>
+<p><img src="https://raw.githubusercontent.com/lqgl/repo/main/img/20201214102438.png" alt=""></p>
+<h3 id="生成token">生成token</h3>
+<p>进入个人中心设置</p>
+<p><img src="https://raw.githubusercontent.com/lqgl/repo/main/img/20201214102542.png" alt=""></p>
+<p>进入<code>Developer settings</code>中，选择<code>Personal aceess token</code>,然后<code>Generate new token</code>.</p>
+<p><img src="https://raw.githubusercontent.com/lqgl/repo/main/img/20201214102805.png" alt=""></p>
+<p>生成 token(Note 部分随便写即可，下边的权限把 <code>repo</code> 相关的打上勾即可)</p>
+<p><img src="https://raw.githubusercontent.com/lqgl/repo/main/img/20201214103050.png" alt=""></p>
+<p>接下来便会生成一个 token，将它复制下来，因为一旦刷新网页，你将见不到这个 token 了。</p>
+<h2 id="下载安装-picgo">下载安装 PicGo</h2>
+<h3 id="下载并安装picgo">下载并安装PicGo</h3>
+<p><a href="https://github.com/Molunerfinn/PicGo">PicGo仓库</a>。</p>
+<h2 id="github图床配置">Github图床配置</h2>
+<p><img src="https://raw.githubusercontent.com/lqgl/repo/main/img/20201214102145.png" alt=""></p>
+<h3 id="github图床配置-1">Github图床配置</h3>
+<p>PicGo的Github图床配置有固定的格式:
+仓库名格式为:<code>用户名/仓库名</code>
+分支名设置为:<code>master</code>
+Token设置为:上面获取到的<code>token</code>
+存储路径可以随意,如设置为:<code>img/</code>
+自定义域名格式为:</p>
+<pre tabindex="0"><code>https://raw.githubusercontent.com/用户名/仓库名/分支名
+</code></pre><h2 id="githubplus插件配置">githubPlus插件配置</h2>
+<p><code>githubPlus</code>可以同步相册,当在<code>PigGo</code>的相册中<strong>删除图片后,会同步删除<code>github</code>上的图片</strong>.</p>
+<h3 id="同步更新删除github">同步更新删除Github</h3>
+<p>在<code>插件设置</code>的搜索框中,输入插件的名称:<code>picgo-plugin-github-plus</code>,然后安装这个插件.
+<img src="https://raw.githubusercontent.com/lqgl/repo/main/img/20201214103627.png" alt=""></p>
+<h3 id="配置githubplus">配置githubPlus</h3>
+<p>这个插件的配置和上面的Github图片配置差不多一样.
+<img src="https://raw.githubusercontent.com/lqgl/repo/main/img/20201214103806.png" alt=""></p>
+<h2 id="picgo其他配置">PicGo其他配置</h2>
+<h3 id="上传快捷方式">上传快捷方式</h3>
+<p>进入PicGo设置，修改上传快捷键(像这样，配合<a href="https://www.snipaste.com/">Snipaste</a>食用更佳，每次<code>F1</code>截完图，选择复制，然后按绑定的组合键即可实现快速上传（快捷键上传的是剪切板中的东西）)</p>
+<p><img src="https://raw.githubusercontent.com/lqgl/repo/main/img/20201214104157.png" alt=""></p>
+<h2 id="参考文档">参考文档</h2>
+<p><a href="https://lanlan2017.github.io/blog/b19c6a80/">PicGo GitHub图床</a>
+<a href="https://www.antmoe.com/posts/c9c6437b/index.html">配置picgo成为多平台图床工具</a></p>
+]]></content></item><item><title>Windows 常用快捷键,Dos命令及MarkDown命令</title><link>https://monoya.top/tech/%E7%94%B5%E8%84%91%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/</link><pubDate>Sun, 05 Jul 2020 00:00:00 +0000</pubDate><guid>https://monoya.top/tech/%E7%94%B5%E8%84%91%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/</guid><description>Windows 常用快捷键 Ctrl + C : 复制 Ctrl + V : 粘贴 Ctrl + X : 剪切 Ctrl + Z : 撤销 Alt + F4 : 关闭窗口 Ctrl + Shift + Esc : 任务管理器 Win + R : 运行 Win + E : 资源管理器 常用 Dos 命令 #</description><content type="html"><![CDATA[<h2 id="windows-常用快捷键">Windows 常用快捷键</h2>
+<ol>
+<li>Ctrl + C : 复制</li>
+<li>Ctrl + V : 粘贴</li>
+<li>Ctrl +  X : 剪切</li>
+<li>Ctrl + Z : 撤销</li>
+<li>Alt + F4 : 关闭窗口</li>
+<li>Ctrl + Shift + Esc : 任务管理器</li>
+<li>Win + R : 运行</li>
+<li>Win + E  : 资源管理器</li>
+</ol>
+<hr>
+<h2 id="常用-dos-命令">常用 Dos 命令</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">#正斜杠与反斜杠  / 和 \  前正后反</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#切换盘符</span>
+</span></span><span class="line"><span class="cl">dir <span class="c1">#查看当前目录下的所有文件 </span>
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> <span class="c1">#切换目录 cd change directory</span>
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> .. <span class="c1">#返回上一级目录</span>
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> /d E:<span class="se">\a</span> <span class="c1">#/d参数用于跨盘符切换</span>
+</span></span><span class="line"><span class="cl">cls   <span class="c1">#清理屏幕(clear screen)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">exit</span>  <span class="c1">#关闭终端</span>
+</span></span><span class="line"><span class="cl">ipconfig <span class="c1">#查看ip信息  查看ip的详细信息 ipconfig \all</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#打开应用</span>
+</span></span><span class="line"><span class="cl">mspaint <span class="c1">#打开画图工具</span>
+</span></span><span class="line"><span class="cl">calc <span class="c1">#打开计算器</span>
+</span></span><span class="line"><span class="cl">notepad <span class="c1">#打开记事本</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#ping 命令</span>
+</span></span><span class="line"><span class="cl">ping www.baidu.com
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#文件操作</span>
+</span></span><span class="line"><span class="cl">md 目录名 <span class="c1">#创建文件夹</span>
+</span></span><span class="line"><span class="cl">cd&gt; 文件名 <span class="c1">#创建文件</span>
+</span></span><span class="line"><span class="cl">del 文件名 <span class="c1">#删除文件</span>
+</span></span><span class="line"><span class="cl">rd 目录名 <span class="c1">#移除文件夹</span>
+</span></span></code></pre></div><hr>
+<h2 id="markdown-常用命令">MarkDown 常用命令</h2>
+<h3 id="标题">标题</h3>
+<h4 id="四级标题">四级标题</h4>
+<pre tabindex="0"><code>#### 标题名
+</code></pre><h5 id="五级标题">五级标题</h5>
+<pre tabindex="0"><code>##### 标题名
+</code></pre><h3 id="字体">字体</h3>
+<p>Hello MarkDown</p>
+<pre tabindex="0"><code>Hello MarkDown
+</code></pre><p><strong>Hello MarkDown</strong></p>
+<pre tabindex="0"><code>**Hello MarkDown**
+</code></pre><p><em>Hello MarkDown</em></p>
+<pre tabindex="0"><code>*Hello MarkDown*
+</code></pre><p><del>Hello World</del></p>
+<pre tabindex="0"><code>~~Hello World~~
+</code></pre><h3 id="超链接">超链接</h3>
+<p>可插入本地或网络地址</p>
+<p><a href="">超链接说明</a></p>
+<pre tabindex="0"><code>[超链接说明]()
+</code></pre><h3 id="引用">引用</h3>
+<blockquote>
+<p>且将新火试新茶，诗酒趁年华。</p>
+</blockquote>
+<pre tabindex="0"><code>&gt; 且将新火试新茶，诗酒趁年华。
+</code></pre><h3 id="图片">图片</h3>
+<p>可插入本地或网络地址</p>
+<p><img src="https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png" alt="图片说明"></p>
+<pre tabindex="0"><code>![图片说明](https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png)
+</code></pre><h3 id="列表">列表</h3>
+<h4 id="有序列表">有序列表</h4>
+<ol>
+<li>A</li>
+<li>B</li>
+<li>C</li>
+</ol>
+<pre tabindex="0"><code>1. A
+2. B
+3. C
+</code></pre><h4 id="无序列表">无序列表</h4>
+<ul>
+<li>A</li>
+<li>B</li>
+<li>C</li>
+</ul>
+<pre tabindex="0"><code>- A
+- B
+- C
+</code></pre><h3 id="表格">表格</h3>
+<table>
+<thead>
+<tr>
+<th>姓名</th>
+<th>性别</th>
+<th>年龄</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>张三</td>
+<td>男</td>
+<td>13</td>
+</tr>
+</tbody>
+</table>
+<pre tabindex="0"><code>|姓名|性别|年龄|
+|---|---|---|
+|张三|男| 13|
+</code></pre>]]></content></item></channel></rss>
