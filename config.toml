@@ -1,23 +1,49 @@
+### 网站网址
 baseURL = "https://monoya.top"
-languageCode = "zh-hans"
-defaultContentLanguage = "zh-hans"
+
+# 设置没有语言指示符的内容的默认为该语言 
+languageCode = "zh_CN"
+
+# 默认内容语言
+defaultContentLanguage = "zh"
+
+# 标题
 title = "Monoya Blog"
+
+# 主题名字
 theme = "hermit"
+
 # enableGitInfo = true
+
+# 对没有指定语言的代码栏启用语法猜测
 pygmentsCodefences  = true
+
+# 启用使用外部 CSS 突出显示语法
 pygmentsUseClasses  = true
-# hasCJKLanguage = true  # If Chinese/Japanese/Korean is your main content language, enable this to make wordCount works right.
-rssLimit = 10  # Maximum number of items in the RSS feed.
-copyright = "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License." # This message is only used by the RSS template.
-enableEmoji = true  # Shorthand emojis in content files - https://gohugo.io/functions/emojify/
+
+# If Chinese/Japanese/Korean is your main content language, enable this to make wordCount works right.
+# hasCJKLanguage = true  
+
+# Maximum number of items in the RSS feed.
+rssLimit = 10  
+
+# This message is only used by the RSS template.
+copyright = "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License." 
+
+# Shorthand emojis in content files - https://gohugo.io/functions/emojify/
+enableEmoji = true  
+
+# Google Analytics 跟踪 ID
 # googleAnalytics = "UA-123-45"
+
+# 代表网站配置中定义的DISQUS短码的短名称的字符串
 # disqusShortname = "yourdiscussshortname"
 
 [author]
   name = "Monoya"
 
 [blackfriday]
-  # hrefTargetBlank = true
+  # hrefTargetBlank = true # true 将在新窗口或选项卡中打开外部链接绝对链接
   # noreferrerLinks = true
   # nofollowLinks = true
 
@@ -34,11 +60,14 @@ enableEmoji = true  # Shorthand emojis in content files - https://gohugo.io/func
   # Metadata mostly used in document's head
   # description = ""
   # images = [""]
-  themeColor = "#494f5c"
+  themeColor = "#fcfcfc"
 
   homeSubtitle = "Waiting for the wind to come, rather than chasing the wind to go."
+
   footerCopyright = ' &#183; <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a>'
-  # bgImg = ""  # Homepage background-image URL
+
+  # Homepage background-image URL 
+  # bgImg = ""  
 
   # Prefix of link to the git commit detail page. GitInfo must be enabled.
   # gitUrl = "https://github.com/username/repository/commit/"
@@ -56,32 +85,27 @@ enableEmoji = true  # Shorthand emojis in content files - https://gohugo.io/func
   # Social Icons
   # Check https://github.com/Track3/hermit#social-icons for more info.
   [[params.social]]
-    name = "qq"
-    url = "http://wpa.qq.com/msgrd?v=3&uin=12736481&site=qq&menu=yes"
+    name = "twitter"
+    url = "https://twitter.com/"
 
   [[params.social]]
-    name = "email"
-    url = "https://mail.qq.com/"
+    name = "instagram"
+    url = "https://instagram.com/"
 
   [[params.social]]
-    name = "github"
-    url = "https://github.com/lqgl"
+  name = "github"
+  url = "https://github.com/lqgl"
 
 [menu]
 
   [[menu.main]]
-    name = "Java Web"
-    url = "java-web/"
+    name = "Life"
+    url = "life/"
     weight = 10
 
   [[menu.main]] 
-    name = "Linux"
-    url = "linux-post/"
-    weight = 10
-
-  [[menu.main]]
-    name = "Userful Kit"
-    url = "kit/"
+    name = "Tech"
+    url = "tech/"
     weight = 10
 
   [[menu.main]]
