@@ -1,11 +1,11 @@
 ### 网站网址
-baseURL = "https://monoya.top"
+baseURL = "https://lqgl.cool"
 
 # 设置没有语言指示符的内容的默认为该语言 
 languageCode = "zh-hans"
 
 # 标题
-title = "Monoya's Blog"
+title = "Lqgl's Blog"
 
 # enableGitInfo = true
 
@@ -34,7 +34,7 @@ enableEmoji = true
 # disqusShortname = "yourdiscussshortname"
 
 [author]
-  name = "Monoya"
+  name = "Lqgl"
 
 [blackfriday]
   # hrefTargetBlank = true # true 将在新窗口或选项卡中打开外部链接绝对链接
@@ -51,8 +51,8 @@ enableEmoji = true
   dateformNum     = "2006-01-02"
   dateformNumTime = "2006-01-02 15:04"
 
-  description = "Monoya的个人博客"
-  keywords = "Monoya,blog,博客,个人网站,中文独立博客"
+  description = "Lqgl的个人博客"
+  keywords = "Lqgl ,blog,博客,个人网站,中文独立博客"
 
   # Metadata mostly used in document's head
   # images = [""]
