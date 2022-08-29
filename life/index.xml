@@ -1,4 +1,121 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lives on Lqgl's Blog</title><link>https://lqgl.cool/life/</link><description>Recent content in Lives on Lqgl's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-hans</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 02 Jul 2022 17:28:45 +0800</lastBuildDate><atom:link href="https://lqgl.cool/life/index.xml" rel="self" type="application/rss+xml"/><item><title>关于个人博客</title><link>https://lqgl.cool/life/%E5%85%B3%E4%BA%8E%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</link><pubDate>Sat, 02 Jul 2022 17:28:45 +0800</pubDate><guid>https://lqgl.cool/life/%E5%85%B3%E4%BA%8E%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</guid><description>记不得这是我第几次捡起个人博客，遗憾的是以前没有坚持下来，没有把这件事形成一个习惯。 但每一次博客的搭建过程却总是热情满满，很是欢喜的去更换主</description><content type="html"><![CDATA[<p>记不得这是我第几次捡起个人博客，遗憾的是以前没有坚持下来，没有把这件事形成一个习惯。</p>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lives on Lqgl's Blog</title><link>https://lqgl.cool/life/</link><description>Recent content in Lives on Lqgl's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-hans</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 29 Aug 2022 14:03:36 +0800</lastBuildDate><atom:link href="https://lqgl.cool/life/index.xml" rel="self" type="application/rss+xml"/><item><title>制定周计划</title><link>https://lqgl.cool/life/%E5%88%B6%E5%AE%9A%E5%91%A8%E8%AE%A1%E5%88%92/</link><pubDate>Mon, 29 Aug 2022 14:03:36 +0800</pubDate><guid>https://lqgl.cool/life/%E5%88%B6%E5%AE%9A%E5%91%A8%E8%AE%A1%E5%88%92/</guid><description>动机 年初制定的计划完成度很低 时常感觉不知道该做什么 总是疲于应付突发情况 被事情带着走，控制感弱 焦虑，缺乏安全感 没有成长 工具 笔记软件, 多端同步 eg:</description><content type="html"><![CDATA[<h2 id="动机">动机</h2>
+<ol>
+<li>年初制定的<strong>计划完成度很低</strong></li>
+<li>时常感觉不知道<strong>该做什么</strong></li>
+<li>总是疲于<strong>应付突发情况</strong></li>
+<li>被事情<strong>带着走</strong>，控制感弱</li>
+<li><strong>焦虑</strong>，缺乏<strong>安全感</strong></li>
+<li>没有<strong>成长</strong></li>
+</ol>
+<h2 id="工具">工具</h2>
+<p>笔记软件, 多端同步</p>
+<p>eg: 印象笔记</p>
+<h2 id="整体流程内容">整体流程内容</h2>
+<ol>
+<li>本周计划列表  记录一周中需要做的事</li>
+<li>新发现，新思考 记录那些闪现的 idea</li>
+<li>周记录</li>
+<li>中长期计划表 年度计划、季度计划、月计划</li>
+<li>复盘回顾</li>
+<li>价值评估</li>
+<li>任务分解</li>
+<li>主题日</li>
+</ol>
+<h2 id="整体流程步骤">整体流程步骤</h2>
+<ol>
+<li>记录
+记录下这周发生的所有事情</li>
+<li>回顾
+复盘这周所有任务的执行情况，并结合中长期计划表，
+再经过价值评估与任务分解得出下周的待办事项。</li>
+<li>编排
+将待办事件安排到每一个工作日</li>
+</ol>
+<h2 id="主题">主题</h2>
+<h3 id="记录">记录</h3>
+<h4 id="周计划执行时的记录">周计划执行时的记录</h4>
+<p>将遇到过的、想到过的、都记录下来</p>
+<p>原则：先记下来，不着急做，除非是重要且紧急的事</p>
+<ol>
+<li><strong>确认</strong>
+需要确认的内容</li>
+<li><strong>补充</strong>
+需要补充的内容</li>
+<li><strong>关注</strong>
+需要留意关注的内容</li>
+<li><strong>思考</strong>
+平时思考的结果</li>
+</ol>
+<h4 id="闪现-idea-的记录">闪现 idea 的记录</h4>
+<p>将大脑从记忆琐事中解脱出来，用来思考问题</p>
+<p>原则：使用工具、将闪现的想法记录下来，重要的是这个操作要迅速，成本低，<strong>不能影响到思考本身</strong></p>
+<p>场景:</p>
+<ol>
+<li>走路</li>
+<li>洗澡</li>
+<li>浏览网页</li>
+<li>与人交谈</li>
+</ol>
+<h3 id="回顾">回顾</h3>
+<h4 id="每周回顾">每周回顾</h4>
+<p>对本周的复盘</p>
+<ol>
+<li>
+<p>创建新的笔记，将这周发生的所有信息都汇总起来，<strong>包括中长期计划表中的内容</strong></p>
+</li>
+<li>
+<p>逐条评估！</p>
+<ol>
+<li>完成的情况怎么样？<strong>做得好的地方，没做好的地方</strong></li>
+<li>完成不理想的原因是什么？怎么改善？</li>
+<li>下周<strong>是否还要继续</strong>？是否可以委托别人做？</li>
+<li>是否有价值仔细阅读与学习？</li>
+<li>是否是对已有知识体系的<strong>补充</strong>？</li>
+<li>是否有利于<strong>长期成长</strong>？要持续关注？</li>
+</ol>
+</li>
+<li>
+<p>甄别最有价值的事情
+原则：<strong>Pareto principle - 关键少数法则</strong></p>
+<ol>
+<li>是否有助于达成目标的<strong>关键事项</strong></li>
+<li><strong>重要但不紧急</strong>的任务，可以降低发生重要又紧急的事情的概率，
+会增加你的掌控感</li>
+</ol>
+</li>
+<li>
+<p>每件事，都要有目标
+原则：<strong>SMART criteria - SMART法则</strong></p>
+<ol>
+<li>目标，最好是可量化的</li>
+<li>每一天只需要聚焦在<strong>具体事项</strong>的<strong>目标达成</strong>上</li>
+</ol>
+</li>
+</ol>
+<h3 id="编排">编排</h3>
+<h4 id="事项划分">事项划分</h4>
+<p>结合<strong>复盘</strong>内容与<strong>中长期计划表</strong>，将任务安排到下周的每一天</p>
+<p>可以分为以下几大类：</p>
+<p>工作   学习    创作</p>
+<p>生活   享受    使命</p>
+<p><strong>重要的是平衡，否则无法长期维持</strong></p>
+<p><strong>努力的目标那就是，享受生活</strong></p>
+<h4 id="安排到每一天">安排到每一天</h4>
+<ol>
+<li>同一天内尽量安排类似的事情 - <strong>主题日</strong></li>
+<li>把一定要完成的事情安排在效率最高，不被打扰的时段 - <strong>要事第一</strong></li>
+</ol>
+<h2 id="注意事项">注意事项</h2>
+<ol>
+<li>根据实际情况制定任务量，并不是越多越好，追求的应该是高质量完成，
+<strong>不要给自己太多压力</strong>。</li>
+<li>太多未完成任务会带来<strong>沮丧感</strong>。</li>
+<li>如果经常被打断(集中思考)，需要与外部做协调，或给自己创造环境。</li>
+<li><strong>提醒自己关注下计划表</strong></li>
+</ol>
+<h1 id="参考资料">参考资料</h1>
+<p><a href="https://www.bilibili.com/video/BV1gJ411k7i9?spm_id_from=333.999.0.0&amp;vd_source=c0bd412f4e3efd5d80e196d81c024209">我是怎么做周计划 | 生产力提升 | 我的方法</a></p>
+]]></content></item><item><title>关于个人博客</title><link>https://lqgl.cool/life/%E5%85%B3%E4%BA%8E%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</link><pubDate>Sat, 02 Jul 2022 17:28:45 +0800</pubDate><guid>https://lqgl.cool/life/%E5%85%B3%E4%BA%8E%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</guid><description>记不得这是我第几次捡起个人博客，遗憾的是以前没有坚持下来，没有把这件事形成一个习惯。 但每一次博客的搭建过程却总是热情满满，很是欢喜的去更换主</description><content type="html"><![CDATA[<p>记不得这是我第几次捡起个人博客，遗憾的是以前没有坚持下来，没有把这件事形成一个习惯。</p>
 <p>但每一次博客的搭建过程却总是热情满满，很是欢喜的去更换主题，改变样式。但却没有持续的热情去写作，总是不了了之，难以为继。</p>
 <p>我想还是有很多东西可以用博客记录下来的，或生活，或学习笔记。</p>
 <p>希望接下来的日子里，我能够坚持下去。✊</p>
