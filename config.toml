@@ -105,6 +105,11 @@ enableEmoji = true
     weight = 10
 
   [[menu.main]]
+    name = "Article"
+    url = "/article/"
+    weight = 10
+
+  [[menu.main]]
     name = "About"
     url = "/about-me/"
     weight = 20
