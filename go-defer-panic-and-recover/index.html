@@ -1,0 +1,234 @@
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=robots content="noodp"><title>Defer Panic and Recover - Lqgl's Blog</title><meta name=Description content="A blog of lqgl."><meta property="og:title" content="Defer Panic and Recover"><meta property="og:description" content="英文原文: Defer, Panic, and Recover 介绍 Go有常见的控制流机制：if、for、switch、goto。它也有go语句来运行单独的goroutine中的代码。这"><meta property="og:type" content="article"><meta property="og:url" content="https://lqgl.cool/go-defer-panic-and-recover/"><meta property="og:image" content="https://lqgl.cool/go-defer-panic-and-recover/images.png"><meta property="article:section" content="posts"><meta property="article:published_time" content="2022-09-16T09:49:15+08:00"><meta property="article:modified_time" content="2022-09-28T19:00:22+08:00"><meta property="og:site_name" content="Lqgl's Blog"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://lqgl.cool/go-defer-panic-and-recover/images.png"><meta name=twitter:title content="Defer Panic and Recover"><meta name=twitter:description content="英文原文: Defer, Panic, and Recover 介绍 Go有常见的控制流机制：if、for、switch、goto。它也有go语句来运行单独的goroutine中的代码。这"><meta name=application-name content="Lqgl's Blog"><meta name=apple-mobile-web-app-title content="Lqgl's Blog"><meta name=theme-color content="#ffffff"><meta name=msapplication-TileColor content="#da532c"><link rel="shortcut icon" type=image/x-icon href=/favicon.ico><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=https://lqgl.cool/go-defer-panic-and-recover/><link rel=prev href=https://lqgl.cool/go-slice/><link rel=next href=https://lqgl.cool/go-communication/><link rel=stylesheet href=/css/style.min.css><link rel=preload href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css as=style onload='this.onload=null,this.rel="stylesheet"'><noscript><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css></noscript><link rel=preload href=https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css as=style onload='this.onload=null,this.rel="stylesheet"'><noscript><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css></noscript><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"Defer Panic and Recover","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/lqgl.cool\/go-defer-panic-and-recover\/"},"image":[{"@type":"ImageObject","url":"https:\/\/lqgl.cool\/go-defer-panic-and-recover\/images.png","width":800,"height":320}],"genre":"posts","keywords":"Go","wordcount":1896,"url":"https:\/\/lqgl.cool\/go-defer-panic-and-recover\/","datePublished":"2022-09-16T09:49:15+08:00","dateModified":"2022-09-28T19:00:22+08:00","license":"This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher":{"@type":"Organization","name":"lqgl","logo":{"@type":"ImageObject","url":"https:\/\/lqgl.cool\/images\/avatar.png","width":200,"height":200}},"author":{"@type":"Person","name":"lqgl"},"description":""}</script></head><body data-header-desktop=fixed data-header-mobile=auto><script type=text/javascript>(window.localStorage&&localStorage.getItem("theme")?localStorage.getItem("theme")==="dark":"auto"==="auto"?window.matchMedia("(prefers-color-scheme: dark)").matches:"auto"==="dark")&&document.body.setAttribute("theme","dark")</script><div id=mask></div><div class=wrapper><header class=desktop id=header-desktop><div class=header-wrapper><div class=header-title><a href=/ title="Lqgl's Blog">Lqgl's Blog</a></div><div class=menu><div class=menu-inner><a class=menu-item href=/posts/>所有文章 </a><a class=menu-item href=/tags/>标签 </a><a class=menu-item href=/categories/>分类 </a><a class=menu-item href=/links/>友链 </a><a class=menu-item href=/about/>关于 </a><a class=menu-item href=https://github.com/lqgl title=GitHub rel="noopener noreffer" target=_blank><i class='fab fa-github fa-fw' aria-hidden=true></i> </a><span class="menu-item delimiter"></span><span class="menu-item search" id=search-desktop>
+<input type=text placeholder=搜索文章标题或内容... id=search-input-desktop>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-desktop title=搜索><i class="fas fa-search fa-fw" aria-hidden=true></i></a>
+<a href=javascript:void(0); class="search-button search-clear" id=search-clear-desktop title=清空><i class="fas fa-times-circle fa-fw" aria-hidden=true></i></a>
+<span class="search-button search-loading" id=search-loading-desktop><i class="fas fa-spinner fa-fw fa-spin" aria-hidden=true></i></span>
+</span><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题><i class="fas fa-adjust fa-fw" aria-hidden=true></i>
+</a><a href=javascript:void(0); class="menu-item language" title=选择语言><i class="fa fa-globe" aria-hidden=true></i>
+<select class=language-select id=language-select-desktop onchange="location=this.value"><option value=/go-defer-panic-and-recover/ selected>简体中文</option></select></a></div></div></div></header><header class=mobile id=header-mobile><div class=header-container><div class=header-wrapper><div class=header-title><a href=/ title="Lqgl's Blog">Lqgl's Blog</a></div><div class=menu-toggle id=menu-toggle-mobile><span></span><span></span><span></span></div></div><div class=menu id=menu-mobile><div class=search-wrapper><div class="search mobile" id=search-mobile><input type=text placeholder=搜索文章标题或内容... id=search-input-mobile>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-mobile title=搜索><i class="fas fa-search fa-fw" aria-hidden=true></i></a>
+<a href=javascript:void(0); class="search-button search-clear" id=search-clear-mobile title=清空><i class="fas fa-times-circle fa-fw" aria-hidden=true></i></a>
+<span class="search-button search-loading" id=search-loading-mobile><i class="fas fa-spinner fa-fw fa-spin" aria-hidden=true></i></span></div><a href=javascript:void(0); class=search-cancel id=search-cancel-mobile>取消</a></div><a class=menu-item href=/posts/ title>所有文章</a><a class=menu-item href=/tags/ title>标签</a><a class=menu-item href=/categories/ title>分类</a><a class=menu-item href=/links/ title>友链</a><a class=menu-item href=/about/ title>关于</a><a class=menu-item href=https://github.com/lqgl title=GitHub rel="noopener noreffer" target=_blank><i class='fab fa-github fa-fw' aria-hidden=true></i></a><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题>
+<i class="fas fa-adjust fa-fw" aria-hidden=true></i>
+</a><a href=javascript:void(0); class=menu-item title=选择语言><i class="fa fa-globe fa-fw" aria-hidden=true></i>
+<select class=language-select onchange="location=this.value"><option value=/go-defer-panic-and-recover/ selected>简体中文</option></select></a></div></div></header><div class="search-dropdown desktop"><div id=search-dropdown-desktop></div></div><div class="search-dropdown mobile"><div id=search-dropdown-mobile></div></div><main class=main><div class=container><div class=toc id=toc-auto><h2 class=toc-title>目录</h2><div class="toc-content always-active" id=toc-content-auto></div></div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Defer Panic and Recover</h1><div class=post-meta><div class=post-meta-line><span class=post-author><a href=/ title=Author rel=author class=author><i class="fas fa-user-circle fa-fw" aria-hidden=true></i>lqgl</a></span>&nbsp;<span class=post-category>收录于 <a href=/categories/go-blog/><i class="far fa-folder fa-fw" aria-hidden=true></i>Go Blog</a></span></div><div class=post-meta-line><i class="far fa-calendar-alt fa-fw" aria-hidden=true></i>&nbsp;<time datetime=2022-09-16>2022-09-16</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden=true></i>&nbsp;约 1896 字&nbsp;
+<i class="far fa-clock fa-fw" aria-hidden=true></i>&nbsp;预计阅读 4 分钟&nbsp;</div></div><div class=featured-image><img class=lazyload src=/svg/loading.min.svg data-src=/go-defer-panic-and-recover/images.png data-srcset="/go-defer-panic-and-recover/images.png, /go-defer-panic-and-recover/images.png 1.5x, /go-defer-panic-and-recover/images.png 2x" data-sizes=auto alt=/go-defer-panic-and-recover/images.png title=/go-defer-panic-and-recover/images.png></div><div class="details toc" id=toc-static data-kept><div class="details-summary toc-title"><span>目录</span>
+<span><i class="details-icon fas fa-angle-right" aria-hidden=true></i></span></div><div class="details-content toc-content" id=toc-content-static><nav id=TableOfContents><ul><li><a href=#介绍>介绍</a><ul><li><a href=#defer>defer</a></li><li><a href=#panic>Panic</a></li><li><a href=#recover>Recover</a></li><li><a href=#more>More</a></li></ul></li></ul></nav></div></div><div class=content id=content><p>英文原文: <a href=https://go.dev/blog/defer-panic-and-recover target=_blank rel="noopener noreffer">Defer, Panic, and Recover</a></p><h2 id=介绍>介绍</h2><p>Go有常见的控制流机制：if、for、switch、goto。它也有go语句来运行单独的goroutine中的代码。这里我想讨论一些不太常见的机制：defer、panic和recover。</p><h3 id=defer>defer</h3><p>defer语句将一个函数调用推到一个列表中。保存的调用列表在周围的函数返回后被执行。defer通常被用来简化执行各种清理动作的函数。</p><p>例如，让我们看看一个打开两个文件并将一个文件的内容复制到另一个文件的函数:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-go data-lang=go><span class=line><span class=cl><span class=kd>func</span> <span class=nf>CopyFile</span><span class=p>(</span><span class=nx>dstName</span><span class=p>,</span> <span class=nx>srcName</span> <span class=kt>string</span><span class=p>)</span> <span class=p>(</span><span class=nx>written</span> <span class=kt>int64</span><span class=p>,</span> <span class=nx>err</span> <span class=kt>error</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nx>src</span><span class=p>,</span> <span class=nx>err</span> <span class=o>:=</span> <span class=nx>os</span><span class=p>.</span><span class=nf>Open</span><span class=p>(</span><span class=nx>srcName</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=nx>err</span> <span class=o>!=</span> <span class=kc>nil</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nx>dst</span><span class=p>,</span> <span class=nx>err</span> <span class=o>:=</span> <span class=nx>os</span><span class=p>.</span><span class=nf>Create</span><span class=p>(</span><span class=nx>dstName</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=nx>err</span> <span class=o>!=</span> <span class=kc>nil</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nx>written</span><span class=p>,</span> <span class=nx>err</span> <span class=p>=</span> <span class=nx>io</span><span class=p>.</span><span class=nf>Copy</span><span class=p>(</span><span class=nx>dst</span><span class=p>,</span> <span class=nx>src</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=nx>dst</span><span class=p>.</span><span class=nf>Close</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>    <span class=nx>src</span><span class=p>.</span><span class=nf>Close</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><p>这可以工作，但有一个错误。如果对os.Create的调用失败，该函数将在没有关闭源文件的情况下返回。这可以通过在第二个返回语句之前调用 src.Close 来轻松解决，但如果这个函数更复杂，问题可能就不会那么容易被注意和解决了。通过引入defer语句，我们可以确保文件始终被关闭:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-go data-lang=go><span class=line><span class=cl><span class=kd>func</span> <span class=nf>CopyFile</span><span class=p>(</span><span class=nx>dstName</span><span class=p>,</span> <span class=nx>srcName</span> <span class=kt>string</span><span class=p>)</span> <span class=p>(</span><span class=nx>written</span> <span class=kt>int64</span><span class=p>,</span> <span class=nx>err</span> <span class=kt>error</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nx>src</span><span class=p>,</span> <span class=nx>err</span> <span class=o>:=</span> <span class=nx>os</span><span class=p>.</span><span class=nf>Open</span><span class=p>(</span><span class=nx>srcName</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=nx>err</span> <span class=o>!=</span> <span class=kc>nil</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=k>defer</span> <span class=nx>src</span><span class=p>.</span><span class=nf>Close</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nx>dst</span><span class=p>,</span> <span class=nx>err</span> <span class=o>:=</span> <span class=nx>os</span><span class=p>.</span><span class=nf>Create</span><span class=p>(</span><span class=nx>dstName</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=nx>err</span> <span class=o>!=</span> <span class=kc>nil</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=k>defer</span> <span class=nx>dst</span><span class=p>.</span><span class=nf>Close</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=nx>io</span><span class=p>.</span><span class=nf>Copy</span><span class=p>(</span><span class=nx>dst</span><span class=p>,</span> <span class=nx>src</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><p>延迟语句允许我们考虑在打开每个文件后立即关闭它，确保无论函数中返回语句的数量如何，文件都将被关闭。</p><p>延迟语句的行为是直接的和可预测的。有三个简单的规则:</p><pre><code>1. 当对defer语句求值时，对deferred函数的实参进行求值。
+</code></pre><p>在本例中，当Println调用被延迟时，表达式“i”被求值。延迟调用将在函数返回后打印“0”。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-go data-lang=go><span class=line><span class=cl><span class=kd>func</span> <span class=nf>a</span><span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nx>i</span> <span class=o>:=</span> <span class=mi>0</span>
+</span></span><span class=line><span class=cl>    <span class=k>defer</span> <span class=nx>fmt</span><span class=p>.</span><span class=nf>Println</span><span class=p>(</span><span class=nx>i</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=nx>i</span><span class=o>++</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><pre><code>2. 延迟的函数调用在周围的函数返回后按照后进先出的顺序执行
+</code></pre><p>这个函数输出"3210"：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-go data-lang=go><span class=line><span class=cl><span class=kd>func</span> <span class=nf>b</span><span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>for</span> <span class=nx>i</span> <span class=o>:=</span> <span class=mi>0</span><span class=p>;</span> <span class=nx>i</span> <span class=p>&lt;</span> <span class=mi>4</span><span class=p>;</span> <span class=nx>i</span><span class=o>++</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=k>defer</span> <span class=nx>fmt</span><span class=p>.</span><span class=nf>Print</span><span class=p>(</span><span class=nx>i</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><pre><code>3. 延迟函数可以读取并赋值给返回函数的命名返回值。
+</code></pre><p>在本例中，延迟函数在周围的函数返回后将返回值i加1。因此，这个函数返回2:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-go data-lang=go><span class=line><span class=cl><span class=kd>func</span> <span class=nf>c</span><span class=p>()</span> <span class=p>(</span><span class=nx>i</span> <span class=kt>int</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>defer</span> <span class=kd>func</span><span class=p>()</span> <span class=p>{</span> <span class=nx>i</span><span class=o>++</span> <span class=p>}()</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=mi>1</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><p>这便于修改函数的错误返回值;稍后我们将看到一个这样的例子。</p><h3 id=panic>Panic</h3><p>Panic 是一个内置函数，它会停止正常的控制流程，开始panic。当函数F调用panic时，F的执行将停止，F中的任何defer函数将正常执行，然后F返回给调用者。对于调用者来说，F的行为就像是在呼叫panic。该过程沿着堆栈向上继续，直到当前goroutine中的所有函数都返回，此时程序将崩溃。panic可以通过直接调用panic而引发。它们也可能由运行时错误引起，例如越界数组访问。</p><h3 id=recover>Recover</h3><p>Recover 是一个内置函数，它可以重新控制一个处于panic状态的goroutine。Recover只在延迟函数中有用。在正常执行期间，调用恢复将返回nil，没有其他效果。如果当前goroutine处于panic状态，则调用recover将捕获给panic的值并恢复正常执行。</p><p>下面是一个演示panic和defer机制的示例程序:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-go data-lang=go><span class=line><span class=cl><span class=kn>package</span> <span class=nx>main</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kn>import</span> <span class=s>&#34;fmt&#34;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>func</span> <span class=nf>main</span><span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nf>f</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>    <span class=nx>fmt</span><span class=p>.</span><span class=nf>Println</span><span class=p>(</span><span class=s>&#34;Returned normally from f.&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>func</span> <span class=nf>f</span><span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>defer</span> <span class=kd>func</span><span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=nx>r</span> <span class=o>:=</span> <span class=nb>recover</span><span class=p>();</span> <span class=nx>r</span> <span class=o>!=</span> <span class=kc>nil</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>            <span class=nx>fmt</span><span class=p>.</span><span class=nf>Println</span><span class=p>(</span><span class=s>&#34;Recovered in f&#34;</span><span class=p>,</span> <span class=nx>r</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=p>}()</span>
+</span></span><span class=line><span class=cl>    <span class=nx>fmt</span><span class=p>.</span><span class=nf>Println</span><span class=p>(</span><span class=s>&#34;Calling g.&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=nf>g</span><span class=p>(</span><span class=mi>0</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=nx>fmt</span><span class=p>.</span><span class=nf>Println</span><span class=p>(</span><span class=s>&#34;Returned normally from g.&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>func</span> <span class=nf>g</span><span class=p>(</span><span class=nx>i</span> <span class=kt>int</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=nx>i</span> <span class=p>&gt;</span> <span class=mi>3</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nx>fmt</span><span class=p>.</span><span class=nf>Println</span><span class=p>(</span><span class=s>&#34;Panicking!&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=nb>panic</span><span class=p>(</span><span class=nx>fmt</span><span class=p>.</span><span class=nf>Sprintf</span><span class=p>(</span><span class=s>&#34;%v&#34;</span><span class=p>,</span> <span class=nx>i</span><span class=p>))</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=k>defer</span> <span class=nx>fmt</span><span class=p>.</span><span class=nf>Println</span><span class=p>(</span><span class=s>&#34;Defer in g&#34;</span><span class=p>,</span> <span class=nx>i</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=nx>fmt</span><span class=p>.</span><span class=nf>Println</span><span class=p>(</span><span class=s>&#34;Printing in g&#34;</span><span class=p>,</span> <span class=nx>i</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=nf>g</span><span class=p>(</span><span class=nx>i</span> <span class=o>+</span> <span class=mi>1</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><p>函数g接受int i，如果i大于3，它会发生panic，否则它调用自身，参数是i+1。函数f延迟调用recover的函数并打印恢复的值(如果它是非空值)。在继续阅读之前，试着想象一下这个程序的输出可能是什么。</p><p>该程序将输出：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-go data-lang=go><span class=line><span class=cl><span class=nx>Calling</span> <span class=nx>g</span><span class=p>.</span>
+</span></span><span class=line><span class=cl><span class=nx>Printing</span> <span class=nx>in</span> <span class=nx>g</span> <span class=mi>0</span>
+</span></span><span class=line><span class=cl><span class=nx>Printing</span> <span class=nx>in</span> <span class=nx>g</span> <span class=mi>1</span>
+</span></span><span class=line><span class=cl><span class=nx>Printing</span> <span class=nx>in</span> <span class=nx>g</span> <span class=mi>2</span>
+</span></span><span class=line><span class=cl><span class=nx>Printing</span> <span class=nx>in</span> <span class=nx>g</span> <span class=mi>3</span>
+</span></span><span class=line><span class=cl><span class=nx>Panicking</span><span class=p>!</span>
+</span></span><span class=line><span class=cl><span class=nx>Defer</span> <span class=nx>in</span> <span class=nx>g</span> <span class=mi>3</span>
+</span></span><span class=line><span class=cl><span class=nx>Defer</span> <span class=nx>in</span> <span class=nx>g</span> <span class=mi>2</span>
+</span></span><span class=line><span class=cl><span class=nx>Defer</span> <span class=nx>in</span> <span class=nx>g</span> <span class=mi>1</span>
+</span></span><span class=line><span class=cl><span class=nx>Defer</span> <span class=nx>in</span> <span class=nx>g</span> <span class=mi>0</span>
+</span></span><span class=line><span class=cl><span class=nx>Recovered</span> <span class=nx>in</span> <span class=nx>f</span> <span class=mi>4</span>
+</span></span><span class=line><span class=cl><span class=nx>Returned</span> <span class=nx>normally</span> <span class=nx>from</span> <span class=nx>f</span><span class=p>.</span>
+</span></span></code></pre></td></tr></table></div></div><p>如果从f中删除deferred函数，则panic没有恢复，并且到达goroutine的调用堆栈的顶部，从而终止程序。修改后的程序将输出:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-go data-lang=go><span class=line><span class=cl><span class=nx>Calling</span> <span class=nx>g</span><span class=p>.</span>
+</span></span><span class=line><span class=cl><span class=nx>Printing</span> <span class=nx>in</span> <span class=nx>g</span> <span class=mi>0</span>
+</span></span><span class=line><span class=cl><span class=nx>Printing</span> <span class=nx>in</span> <span class=nx>g</span> <span class=mi>1</span>
+</span></span><span class=line><span class=cl><span class=nx>Printing</span> <span class=nx>in</span> <span class=nx>g</span> <span class=mi>2</span>
+</span></span><span class=line><span class=cl><span class=nx>Printing</span> <span class=nx>in</span> <span class=nx>g</span> <span class=mi>3</span>
+</span></span><span class=line><span class=cl><span class=nx>Panicking</span><span class=p>!</span>
+</span></span><span class=line><span class=cl><span class=nx>Defer</span> <span class=nx>in</span> <span class=nx>g</span> <span class=mi>3</span>
+</span></span><span class=line><span class=cl><span class=nx>Defer</span> <span class=nx>in</span> <span class=nx>g</span> <span class=mi>2</span>
+</span></span><span class=line><span class=cl><span class=nx>Defer</span> <span class=nx>in</span> <span class=nx>g</span> <span class=mi>1</span>
+</span></span><span class=line><span class=cl><span class=nx>Defer</span> <span class=nx>in</span> <span class=nx>g</span> <span class=mi>0</span>
+</span></span><span class=line><span class=cl><span class=nx>panic</span><span class=p>:</span> <span class=mi>4</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nx>panic</span> <span class=nx>PC</span><span class=p>=</span><span class=mh>0x2a9cd8</span>
+</span></span><span class=line><span class=cl><span class=p>[</span><span class=nx>stack</span> <span class=nx>trace</span> <span class=nx>omitted</span><span class=p>]</span>
+</span></span></code></pre></td></tr></table></div></div><h3 id=more>More</h3><p>关于panic和recover的真实示例，请参阅Go标准库中的<a href=https://go.dev/pkg/encoding/json/ target=_blank rel="noopener noreffer">json包</a>。它用一组递归函数对接口进行编码。如果在遍历值时发生错误，将调用panic以将堆栈展开到顶层函数调用，该函数从panic中恢复并返回适当的错误值(请参阅<a href=https://go.dev/src/pkg/encoding/json/encode.go target=_blank rel="noopener noreffer">encode.go</a>中encodeState类型的&rsquo; error &lsquo;和&rsquo; marshal &lsquo;方法)。</p><p>Go库中的惯例是，即使一个包在内部使用panic，它的其他外部API仍然显式的错误返回值。</p><p>defer 的其他用途（除了前面给出的file.Close例子之外）包括释放一个mutex：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-go data-lang=go><span class=line><span class=cl><span class=nx>mu</span><span class=p>.</span><span class=nf>Lock</span><span class=p>()</span>
+</span></span><span class=line><span class=cl><span class=k>defer</span> <span class=nx>mu</span><span class=p>.</span><span class=nf>Unlock</span><span class=p>()</span>
+</span></span></code></pre></td></tr></table></div></div><p>打印页脚：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-go data-lang=go><span class=line><span class=cl><span class=nf>printHeader</span><span class=p>()</span>
+</span></span><span class=line><span class=cl><span class=k>defer</span> <span class=nf>printFooter</span><span class=p>()</span>
+</span></span></code></pre></td></tr></table></div></div><p>以及更多。</p><p>总之，defer语句(带或不带panic和recover)为控制流提供了一种不同寻常的强大机制。它可以用于建模由其他编程语言中的特殊目的结构实现的许多特性。试一下。</p></div><div class=post-footer id=post-footer><div class=post-info><div class=post-info-line><div class=post-info-mod><span>更新于 2022-09-28&nbsp;<a class=git-hash href=https://github.com/lqgl/commit/9e7bfd1793d06f5f9c6c23ddc434e893e6e0349e target=_blank title="commit by chentaiwu(chentaiwu@zonst.cn) 9e7bfd1793d06f5f9c6c23ddc434e893e6e0349e: change blog theme">
+<i class="fas fa-hashtag fa-fw" aria-hidden=true></i>9e7bfd1</a></span></div></div><div class=post-info-line><div class=post-info-md><span><a class=link-to-markdown href=/go-defer-panic-and-recover/index.md target=_blank>阅读原始文档</a></span></div><div class=post-info-share><span><a href=javascript:void(0); title="分享到 Twitter" data-sharer=twitter data-url=https://lqgl.cool/go-defer-panic-and-recover/ data-title="Defer Panic and Recover" data-hashtags=Go><i class="fab fa-twitter fa-fw" aria-hidden=true></i></a><a href=javascript:void(0); title="分享到 Facebook" data-sharer=facebook data-url=https://lqgl.cool/go-defer-panic-and-recover/ data-hashtag=Go><i class="fab fa-facebook-square fa-fw" aria-hidden=true></i></a><a href=javascript:void(0); title="分享到 Hacker News" data-sharer=hackernews data-url=https://lqgl.cool/go-defer-panic-and-recover/ data-title="Defer Panic and Recover"><i class="fab fa-hacker-news fa-fw" aria-hidden=true></i></a><a href=javascript:void(0); title="分享到 Line" data-sharer=line data-url=https://lqgl.cool/go-defer-panic-and-recover/ data-title="Defer Panic and Recover"><i data-svg-src=https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg aria-hidden=true></i></a><a href=javascript:void(0); title="分享到 微博" data-sharer=weibo data-url=https://lqgl.cool/go-defer-panic-and-recover/ data-title="Defer Panic and Recover"><i class="fab fa-weibo fa-fw" aria-hidden=true></i></a></span></div></div></div><div class=post-info-more><section class=post-tags><i class="fas fa-tags fa-fw" aria-hidden=true></i>&nbsp;<a href=/tags/go/>Go</a></section><section><span><a href=javascript:void(0); onclick=window.history.back()>返回</a></span>&nbsp;|&nbsp;<span><a href=/>主页</a></span></section></div><div class=post-nav><a href=/go-slice/ class=prev rel=prev title="Go Slice"><i class="fas fa-angle-left fa-fw" aria-hidden=true></i>Go Slice</a>
+<a href=/go-communication/ class=next rel=next title="Share Memory By Communicating">Share Memory By Communicating<i class="fas fa-angle-right fa-fw" aria-hidden=true></i></a></div></div><div id=comments><div id=giscus class=comment></div><noscript>Please enable JavaScript to view the comments powered by <a href=https://giscus.app>Giscus</a>.</noscript></div></article></div></main><footer class=footer><div class=footer-container><div class=footer-line itemscope itemtype=http://schema.org/CreativeWork><i class="far fa-copyright fa-fw" aria-hidden=true></i><span itemprop=copyrightYear>2019 - 2022</span><span class=author itemprop=copyrightHolder>&nbsp;<a href=/ target=_blank>lqgl</a></span>&nbsp;|&nbsp;<span class=license><a rel="license external nofollow noopener noreffer" href=https://creativecommons.org/licenses/by-nc/4.0/ target=_blank>CC BY-NC 4.0</a></span></div></div></footer></div><div id=fixed-buttons><a href=# id=back-to-top class=fixed-button title=回到顶部><i class="fas fa-arrow-up fa-fw" aria-hidden=true></i>
+</a><a href=# id=view-comments class=fixed-button title=查看评论><i class="fas fa-comment fa-fw" aria-hidden=true></i></a></div><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/css/lightgallery-bundle.min.css><script type=text/javascript src=https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/lunr@2.3.9/lunr.min.js></script><script type=text/javascript src=/lib/lunr/lunr.stemmer.support.min.js></script><script type=text/javascript src=/lib/lunr/lunr.zh.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/lightgallery.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/thumbnail/lg-thumbnail.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/zoom/lg-zoom.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js></script><script type=text/javascript>window.config={code:{copyTitle:"复制到剪贴板",maxShownLines:50},comment:{giscus:{category:"Announcements",categoryId:"DIC_kwDOGEtD5s4CRp8B",darkTheme:"dark",emitMetadata:"0",inputPosition:"bottom",lang:"zh-CN",lazyLoading:!1,lightTheme:"light",mapping:"pathname",reactionsEnabled:"1",repo:"lqgl/blog",repoId:"MDEwOlJlcG9zaXRvcnk0MDc1ODU3NjY="}},lightgallery:!0,search:{highlightTag:"em",lunrIndexURL:"/index.json",lunrLanguageCode:"zh",lunrSegmentitURL:"/lib/lunr/lunr.segmentit.js",maxResultLength:10,noResultsFound:"没有找到结果",snippetLength:50,type:"lunr"}}</script><script type=text/javascript src=/js/theme.min.js></script></body><canvas class=fireworks style=position:fixed;left:0;top:0;z-index:1;pointer-events:none></canvas>
+<script type=text/javascript src=/js/anime.min.js></script>
+<script type=text/javascript src=/js/firework.js></script></html>
