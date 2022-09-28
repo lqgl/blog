@@ -1,10 +1,20 @@
 ---
-title: "{{ replace .Name "-" " " | title }}"
+title: "{{ replace .TranslationBaseName "-" " " | title }}"
+subtitle: ""
 date: {{ .Date }}
-draft: true
-toc: false
-images:
-tags: 
-  - untagged
----
+lastmod: {{ .Date }}
+draft: false
+author: "lqgl"
+description: ""
+resources:
+- name: "featured-image"
+  src: "featured-image.jpg"
 
+tags: []
+categories: []
+
+lightgallery: true
+
+toc:
+ auto: false
+---
