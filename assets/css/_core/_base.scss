@@ -15,6 +15,13 @@ html {
   h1 {
     line-height: 125%;
   }
+
+  .sakana-box{
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    transform-origin: 100% 100%; /* 从右下开始变换 */
+  }
 }
 
 /* scrollbar, only support webkit */

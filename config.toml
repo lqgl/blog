@@ -110,6 +110,9 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
   # 鼠标点击烟花爆炸效果
   fireworks = true
 
+  # 石蒜模拟器 https://github.com/itorr/sakana
+  sakana = true
+
   # Header config
   # 页面头部导航栏配置
   [params.header]

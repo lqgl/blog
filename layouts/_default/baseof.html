@@ -42,6 +42,8 @@
             </a>
         </div>
 
+        <div class="sakana-box"></div>
+
         {{- /* Load JavaScript scripts and CSS */ -}}
         {{- partial "assets.html" . -}}
     </body>
@@ -50,5 +52,21 @@
     <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas>
     <script type="text/javascript" src="/js/anime.min.js"></script>
     <script type="text/javascript" src="/js/firework.js"></script>
+    {{- end -}}
+    {{- if .Site.Params.sakana -}}
+    <script src="https://cdn.jsdelivr.net/npm/sakana"></script>
+    <script>
+        Sakana.init({
+            el:         '.sakana-box',     // 启动元素 node 或 选择器
+            character:  'chisato',          // 启动角色 'chisato','takina'
+            inertia:    0.01,              // 惯性
+            decay:      0.99,              // 衰减
+            r:          60,                // 启动角度
+            y:          10,                // 启动高度
+            scale:      .4,                 // 缩放倍数
+            translateY: 0,                 // 位移高度
+            canSwitchCharacter: false,     // 允许换角色
+        });
+    </script>
     {{- end -}}
 </html>
