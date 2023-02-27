@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /control
+Sitemap: https://lqgl.cool/sitemap.xml
