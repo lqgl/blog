@@ -1,0 +1,30 @@
+{{ $src := .Get "src"}}
+{{ $image := (.Page.Resources.ByType "image").GetMatch (printf "**%s**" $src) -}}
+<figure class="big">
+	<img src="{{$src}}" loading="lazy"
+			 {{- if or (.Get "alt") (.Get "caption") }}
+			 alt="{{ with .Get "alt" }}{{ . }}{{ else }}{{ .Get "caption" | markdownify| plainify }}{{ end }}"
+			 {{- end -}}
+			 {{- with $image.Width }} width="{{ . }}"{{ end -}}
+			 {{- with $image.Height }} height="{{ . }}"{{ end -}}
+	/><!-- Closing img tag -->
+	<figcaption>
+		{{ with (.Get "title") -}}
+		<h4>{{ . }}</h4>
+		{{ end -}}
+		{{- if or (.Get "caption") $image.Exif -}}
+		<p>
+			{{- .Get "caption" | markdownify -}}
+			{{ end -}}
+			{{ with $image.Exif -}}
+			<span class="image_meta">
+				{{ with .Tags.Model }}{{.}} {{ end -}}
+				{{ with .Tags.FocalLength }}@ {{.}}mm {{ end -}}
+				{{ with .Tags.FNumber }}&mdash; &fnof;/{{.}}{{ end -}}
+				{{ with .Tags.ExposureTime }}, {{ lang.FormatNumber 2 . }} sec{{ end -}}
+				{{ with .Tags.ISOSpeedRatings }}, ISO {{.}} {{ end }}
+			</span>
+			{{ end -}}
+		</p>
+	</figcaption>
+</figure>

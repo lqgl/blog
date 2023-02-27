@@ -1,0 +1,36 @@
+{{ define "header" }}
+{{ partial "header.html" . }}
+{{ end }}
+
+{{ define "main" }}
+	<main id="site-main" class="wrapper">
+		<div class="title-area">
+			<a id="home-btn" title="{{.Site.Title}}" href="{{.Site.BaseURL}}"><img src="/apple-touch-icon.png" width="180" height="180" alt="Logo"></a>
+			<h1 id="page-title" class="title-area-l">{{ .Title }}</h1>
+		</div>
+		{{- if .Content }}
+		<div class="content">
+			{{ .Content }}
+		</div>
+		{{- end }}
+		{{- range .Data.Pages.GroupByDate "2006" }}
+		<div class="posts-group">
+			<div class="post-year" id="{{ .Key }}">{{ .Key }}</div>
+			<ul class="posts-list">
+				{{- range .Pages }}
+				<li class="post-item">
+					<a href="{{.Permalink}}">
+						<span class="post-title">{{.Title}}</span>
+						<span class="post-day">{{ .Date.Format .Site.Params.dateformShort }}</span>
+					</a>
+				</li>
+				{{- end }}
+			</ul>
+		</div>
+		{{- end }}
+	</main>
+{{ end }}
+
+{{ define "footer" }}
+{{ partialCached "footer.html" . }}
+{{ end }}

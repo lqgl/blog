@@ -1,72 +1,60 @@
-{{- partial "init.html" . -}}
-
 <!DOCTYPE html>
-<html lang="{{ .Site.LanguageCode }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="robots" content="noodp" />
-        <title>{{ block "title" . }}{{ .Site.Title }}{{ end }}</title>
+<html lang="{{.Site.LanguageCode}}">
 
-        {{- partial "head/meta.html" . -}}
-        {{- partial "head/link.html" . -}}
-        {{- partial "head/seo.html" . -}}
-    </head>
-    <body data-header-desktop="{{ .Site.Params.header.desktopMode }}" data-header-mobile="{{ .Site.Params.header.mobileMode }}">
-        {{- /* Check theme isDark before body rendering */ -}}
-        {{- $theme := .Site.Params.defaulttheme -}}
-        <script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('{{ $theme }}' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : '{{ $theme }}' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="color-scheme" content="dark light">
+	<meta name="theme-color" content="{{$.Site.Params.accentColor}}">
+	<meta name="msapplication-TileColor" content="{{$.Site.Params.accentColor}}">
+	<meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}">
+	{{ if .IsHome -}}
+	<meta name="keywords" content="{{ with .Site.Params.keywords }}{{ . }}{{ end }}">
+	{{ end }}
+	{{- template "_internal/schema.html" . }}
+	{{- template "_internal/opengraph.html" . }}
+	{{- template "_internal/twitter_cards.html" . }}
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="manifest" href="/site.webmanifest">
+	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#54bab9">
+	<link rel="shortcut icon" href="/favicon.ico">
+	<title>{{.Title}}</title>
+	<link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+	<link rel="dns-prefetch" href="//comment.zak.ee">
+	<link rel="dns-prefetch" href="//gravatar.loli.net">
+	{{ range .AlternativeOutputFormats -}}
+	{{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
+	{{ end -}}
+	{{ $style := resources.Get "scss/style.scss" | resources.ExecuteAsTemplate "css/style.css" . | toCSS | minify | fingerprint -}}
+	<link rel="stylesheet" href="{{ $style.Permalink }}" {{ printf "integrity=%q" $style.Data.Integrity | safeHTMLAttr }}>
+	{{- .Scratch.Set "pageClass" ""}}
+	{{ block "head" . -}}{{- end }}
+	<script async defer data-website-id="7330213f-48d1-46e2-b669-758ccca4ba47" src="https://analytics.zak.ee/umami.js" data-domains="zak.ee"></script>
+</head>
 
-        <div id="mask"></div>
+<body>
+	<div id="page" class="{{.Scratch.Get "pageClass"}}">
+		{{ block "header" . -}}{{ end -}}
+		{{ block "main" . -}}{{ end -}}
+		{{ block "footer" . -}}{{ end }}
 
-        {{- /* Body wrapper */ -}}
-        <div class="wrapper">
-            {{- partial "header.html" . -}}
-            <main class="main">
-                <div class="container">
-                    {{- block "content" . }}{{ end -}}
-                </div>
-            </main>
-            {{- partial "footer.html" . -}}
-        </div>
+		{{ $main := resources.Get "js/main.js" -}}
+		{{ if .Site.Params.code_copy_button | default true -}}
+		{{ $codeCopy := resources.Get "js/code-copy.js" -}}
+		{{ $script := slice $main $codeCopy | resources.Concat "js/bundle.js" | minify | fingerprint -}}
+		<script src="{{ $script.Permalink }}" {{ printf "integrity=%q" $script.Data.Integrity | safeHTMLAttr }} crossorigin="anonymous"></script>
+		{{ else -}}
+		{{ $script := $main | minify | fingerprint -}}
+		<script src="{{ $script.Permalink }}" {{ printf "integrity=%q" $script.Data.Integrity | safeHTMLAttr }} crossorigin="anonymous"></script>
+		{{ end }}
+	</div>
+	<div id="bg-img"></div>
+	{{ $script := resources.Get "js/main.js" | minify | fingerprint -}}
+	<script src="{{ $script.Permalink }}" {{ printf "integrity=%q" $script.Data.Integrity | safeHTMLAttr }}></script>
+	<script src="/js/instant.page-5.1.1.js" type="module" integrity="sha384-MWfCL6g1OTGsbSwfuMHc8+8J2u71/LA8dzlIN3ycajckxuZZmF+DNjdm7O6H3PSq"></script>
+</body>
 
-        <div id="fixed-buttons">
-            {{- /* top button */ -}}
-            <a href="#" id="back-to-top" class="fixed-button" title="{{ T `backToTop` }}">
-                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
-            </a>
-
-            {{- /* comment button */ -}}
-            <a href="#" id="view-comments" class="fixed-button" title="{{ T `viewComments` }}">
-                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
-            </a>
-        </div>
-
-        <div class="sakana-box"></div>
-
-        {{- /* Load JavaScript scripts and CSS */ -}}
-        {{- partial "assets.html" . -}}
-    </body>
-    {{- if .Site.Params.fireworks -}}
-    <!-- 爆炸烟花 -->
-    <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas>
-    <script type="text/javascript" src="/js/anime.min.js"></script>
-    <script type="text/javascript" src="/js/firework.js"></script>
-    {{- end -}}
-    {{- if .Site.Params.sakana -}}
-    <script src="https://cdn.jsdelivr.net/npm/sakana"></script>
-    <script>
-        Sakana.init({
-            el:         '.sakana-box',     // 启动元素 node 或 选择器
-            character:  'chisato',          // 启动角色 'chisato','takina'
-            inertia:    0.01,              // 惯性
-            decay:      0.99,              // 衰减
-            r:          60,                // 启动角度
-            y:          10,                // 启动高度
-            scale:      .4,                 // 缩放倍数
-            translateY: 0,                 // 位移高度
-            canSwitchCharacter: false,     // 允许换角色
-        });
-    </script>
-    {{- end -}}
 </html>

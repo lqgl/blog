@@ -1,24 +1,30 @@
-{{- define "title" }}{{ .Title }} - {{ .Site.Title }}{{ end -}}
+{{ define "head" }}
+	{{ if .Params.images -}}
+		{{- range first 1 .Params.images -}}
+		<style>:root{ --bg-img: url({{. | absURL}});}</style>
+		{{- end -}}
+	{{- end -}}
+{{ end }}
 
-{{- define "content" -}}
-    {{- $params := .Scratch.Get "params" -}}
-    <div class="page single special">
-        {{- /* Title */ -}}
-        <h1 class="single-title animate__animated animate__pulse animate__faster">
-            {{- .Title -}}
-        </h1>
+{{ define "header" }}
+{{ partial "header.html" . }}
+{{ end }}
 
-        {{- /* Subtitle */ -}}
-        {{- with $params.subtitle -}}
-            <h2 class="single-subtitle">{{ . }}</h2>
-        {{- end -}}
+{{ define "main" }}
+	<main id="site-main" class="wrapper">
+		<div class="title-area">
+			<a id="home-btn" title="{{.Site.Title}}" href="{{.Site.BaseURL}}"><img src="/apple-touch-icon.png" width="180" height="180" alt="Logo"></a>
+			<h1 id="page-title" class="title-area-l">{{ .Title }}</h1>
+		</div>
+		<div class="content">
+			{{ .Content }}
+		</div>
+		{{ with .Params.comments -}}
+		{{ partialCached "comments.html" . }}
+		{{- end }}
+	</main>
+{{ end }}
 
-        {{- /* Content */ -}}
-        <div class="content" id="content">
-            {{- dict "Content" .Content "Ruby" $params.ruby "Fraction" $params.fraction "Fontawesome" $params.fontawesome | partial "function/content.html" | safeHTML -}}
-        </div>
-
-        {{- /* Comment */ -}}
-        {{- partial "comment.html" . -}}
-    </div>
-{{- end -}}
+{{ define "footer" }}
+{{ partialCached "footer.html" . }}
+{{ end }}
