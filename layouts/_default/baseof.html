@@ -57,6 +57,11 @@
 		<script type="text/javascript" src="/js/firework.js"></script>
 		{{- end -}}
 		<!--end-->
+		<!-- Sakana 石蒜模拟器 https://github.com/itorr/sakana -->
+		{{- if .Params.sakana | default true -}}
+		{{ partialCached "sakana.html" . }}
+		{{- end -}}
+		<!--end-->
 	</div>
 	<div id="bg-img"></div>
 	{{ $script := resources.Get "js/main.js" | minify | fingerprint -}}
