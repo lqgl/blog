@@ -10,11 +10,12 @@ This repo contains everything needed for building my [blog](https://lqgl.cool).
 
 You will need to have [Hugo](https://gohugo.io/) installed to run this repo.
 
-Get the source code by cloning this repo or download it as a zip file directly.
+(1) Get the source code by cloning this repo or download it as a zip file directly.
 
 ```
 $ git clone https://github.com/lqgl/blog.git
 ```
+(2) `cd` into the folder.
 
 Now the folder structure should look similar to this:
 
