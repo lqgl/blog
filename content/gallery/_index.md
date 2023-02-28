@@ -1,5 +1,5 @@
 ---
-title: "Writing"
+title: "Gallery"
 date: 2021-02-13T22:25:46+08:00
 lastmod: 2021-02-13T22:25:46+08:00
 description: 一些随便拍的照片，放在这里只是因为我很喜欢或者我很有意义。
