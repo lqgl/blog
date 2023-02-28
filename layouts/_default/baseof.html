@@ -23,8 +23,6 @@
 	<link rel="shortcut icon" href="/favicon.ico">
 	<title>{{.Title}}</title>
 	<link rel="dns-prefetch" href="//cdn.jsdelivr.net">
-	<link rel="dns-prefetch" href="//comment.zak.ee">
-	<link rel="dns-prefetch" href="//gravatar.loli.net">
 	{{ range .AlternativeOutputFormats -}}
 	{{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
 	{{ end -}}
@@ -32,7 +30,6 @@
 	<link rel="stylesheet" href="{{ $style.Permalink }}" {{ printf "integrity=%q" $style.Data.Integrity | safeHTMLAttr }}>
 	{{- .Scratch.Set "pageClass" ""}}
 	{{ block "head" . -}}{{- end }}
-	<script async defer data-website-id="7330213f-48d1-46e2-b669-758ccca4ba47" src="https://analytics.zak.ee/umami.js" data-domains="zak.ee"></script>
 </head>
 
 <body>
@@ -40,29 +37,19 @@
 		{{ block "header" . -}}{{ end -}}
 		{{ block "main" . -}}{{ end -}}
 		{{ block "footer" . -}}{{ end }}
-
-		{{ $main := resources.Get "js/main.js" -}}
-		{{ if .Site.Params.code_copy_button | default true -}}
-		{{ $codeCopy := resources.Get "js/code-copy.js" -}}
-		{{ $script := slice $main $codeCopy | resources.Concat "js/bundle.js" | minify | fingerprint -}}
-		<script src="{{ $script.Permalink }}" {{ printf "integrity=%q" $script.Data.Integrity | safeHTMLAttr }} crossorigin="anonymous"></script>
-		{{ else -}}
-		{{ $script := $main | minify | fingerprint -}}
-		<script src="{{ $script.Permalink }}" {{ printf "integrity=%q" $script.Data.Integrity | safeHTMLAttr }} crossorigin="anonymous"></script>
-		{{ end }}
-		<!--鼠标点击爆炸五颜六色特效-->
-		{{- if .Site.Params.fireworks | default true -}}
-		<canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas>
-		<script type="text/javascript" src="/js/anime.min.js"></script>
-		<script type="text/javascript" src="/js/firework.js"></script>
-		{{- end -}}
-		<!--end-->
 		<!-- Sakana 石蒜模拟器 https://github.com/itorr/sakana -->
 		{{- if .Params.sakana | default true -}}
 		{{ partialCached "sakana.html" . }}
 		{{- end -}}
 		<!--end-->
 	</div>
+	<!--鼠标点击爆炸五颜六色特效-->
+	{{- if .Site.Params.fireworks | default true -}}
+	<canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas>
+	<script type="text/javascript" src="/js/anime.min.js"></script>
+	<script type="text/javascript" src="/js/firework.js"></script>
+	{{- end -}}
+	<!--end-->
 	<div id="bg-img"></div>
 	{{ $script := resources.Get "js/main.js" | minify | fingerprint -}}
 	<script src="{{ $script.Permalink }}" {{ printf "integrity=%q" $script.Data.Integrity | safeHTMLAttr }}></script>
