@@ -4,7 +4,7 @@
 ![GitHub repo size](https://img.shields.io/github/repo-size/lqgl/blog?style=flat-square)
 [![Powered by](https://img.shields.io/badge/powered%20by-hugo-ff4088?style=flat-square)](https://gohugo.io)
 
-This repo contains everything needed for building my [blog](https://lqgl.cool).
+This repo contains everything needed for building my [blog](https://lqgl.asia).
 
 ## How to run
 

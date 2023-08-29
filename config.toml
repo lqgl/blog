@@ -1,4 +1,4 @@
-baseURL = "https://lqgl.cool"
+baseURL = "https://lqgl.asia"
 title = "Kami's Planet"
 staticDir = ["static", "content-static"]
 languageCode = "zh-CN"
