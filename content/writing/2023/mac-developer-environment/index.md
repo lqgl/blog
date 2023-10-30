@@ -37,7 +37,7 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
     ```
     sudo vi ~/.zprofile
     ```
-2. Add new path
+2. Add new path to ~/.zprofile
     ```
     export PATH="$PATH:[NEW_DIRECTORY]/bin"
     ```
