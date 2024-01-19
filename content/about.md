@@ -14,7 +14,7 @@ comments: false
 
 ## Find me on…
 
-* Telegram: [@kami2049](http://t.me/kami2049)
+* Telegram: [@kami2077](http://t.me/kami2077)
 * Twitter: [@kami2077](https://twitter.com/kami2077)
 * Weibo: [酸奶很Cool](https://weibo.com/u/6342388090)
 * QQ: 948735627

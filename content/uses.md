@@ -10,8 +10,8 @@ comments: true
 
 ## 硬件
 
-* 💻：MacBook Pro / Samsung Galaxy Tab S7 Plus
-* 📱：Google Pixel 4 / Hisense A5 Pro
+* 💻：MacBook Air / Samsung Galaxy Tab S7 Plus
+* 📱：Google Pixel 4 / Redmi K60 Pro
 * ⌨️：ikbc C87
 * 🎮：Nintendo Switch (original version) / Xbox One S
 
