@@ -7,8 +7,6 @@ hasCJKLanguage = true
 rssLimit = 10
 copyright = "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License."
 code_copy_button = true # Turn on/off the code-copy-button for code-fields
-[author]
-  name = "Kami"
 
 [markup]
   defaultMarkdownHandler = "goldmark"
@@ -26,6 +24,7 @@ code_copy_button = true # Turn on/off the code-copy-button for code-fields
 
 [taxonomies]
   tag = "tags"
+  author = "Kami"
 
 [params]
   dateform        = "Jan 2, 2006"
