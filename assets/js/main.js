@@ -82,3 +82,7 @@ window.addEventListener('scroll', throttle(() => {
     btnVisibility();
   }
 }, 150));
+
+// Vercel Analytics
+window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+window.va('event', 'page_view');

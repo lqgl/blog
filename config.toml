@@ -1,4 +1,4 @@
-baseURL = "https://lqgl.asia"
+baseURL = "https://planet-kami.vercel.app/"
 title = "Kami's Planet"
 staticDir = ["static", "content-static"]
 languageCode = "zh-CN"
