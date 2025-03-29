@@ -1,0 +1,28 @@
+{
+    "trailingSlash": true,
+    "headers": [
+        {
+            "source": "/(.*).(jpe?g|png|gif|webp|ico|svg|css|js|ttf|otf|woff2?)",
+            "headers": [
+                {
+                    "key": "Cache-Control",
+                    "value": "public, max-age=15552000, immutable"
+                }
+            ]
+        },
+        {
+            "source": "/js/comment.js",
+            "headers": [
+                {
+                    "key": "Cache-Control",
+                    "value": "public, max-age=2592000, must-revalidate"
+                }
+            ]
+        }
+    ],
+    "build": {
+        "env": {
+            "HUGO_VERSION": "0.145.0"
+        }
+    }
+}
